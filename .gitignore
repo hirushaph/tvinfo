@@ -1,0 +1,7 @@
+node_modules
+auth_info_baileys
+test.js
+src/whatsapp/WaConnect1.js
+.env
+fly.toml
+Dockerfile

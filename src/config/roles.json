@@ -1,0 +1,40 @@
+{
+  "commands": [
+    {
+      "command": ".alive",
+      "allowedRoles": ["user", "admin", "owner"]
+    },
+    {
+      "command": ".mv",
+      "allowedRoles": ["user", "admin", "owner"]
+    },
+    {
+      "command": ".tv",
+      "allowedRoles": ["user", "admin", "owner"]
+    },
+    {
+      "command": ".about",
+      "allowedRoles": ["user", "admin", "owner"]
+    },
+    {
+      "command": ".help",
+      "allowedRoles": ["user", "admin", "owner"]
+    },
+    {
+      "command": ".status",
+      "allowedRoles": ["user", "admin", "owner"]
+    },
+    {
+      "command": ".restart",
+      "allowedRoles": ["admin", "owner"]
+    },
+    {
+      "command": ".add",
+      "allowedRoles": ["user", "admin", "owner"]
+    },
+    {
+      "command": ".remove",
+      "allowedRoles": ["user", "admin", "owner"]
+    }
+  ]
+}
