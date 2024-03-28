@@ -30,7 +30,7 @@ async function sendReply(text, msg) {
 async function sendMediaMessage(text, url, msg) {
   // await randomDelay();
   // await sendMessageWTyping(msg.key.remoteJid);
-  return await sock.sendMessage(
+  const reply = await sock.sendMessage(
     msg.key.remoteJid,
     {
       image: {
@@ -40,6 +40,7 @@ async function sendMediaMessage(text, url, msg) {
     },
     { quoted: msg }
   );
+  return reply;
 }
 
 // async function sendTextMessage(userId, text) {

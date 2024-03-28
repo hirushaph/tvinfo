@@ -1,7 +1,8 @@
 node_modules
-auth_info_baileys
+auth_tvinfo
 test.js
 src/whatsapp/WaConnect1.js
 .env
 fly.toml
 Dockerfile
+tvinfo_store.json
