@@ -21,7 +21,6 @@ logger.level = "fatal";
 
 // Setup Store
 const store = makeInMemoryStore({ logger });
-console.log(store);
 store?.readFromFile("./tvinfo_store.json");
 // save every 10s
 setInterval(() => {
