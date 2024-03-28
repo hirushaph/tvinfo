@@ -1,4 +1,3 @@
-const axios = require("axios");
 const {
   TMDB_MOVIE_SEARCH_URL,
   SEARCH_RESULT_LIMIT,
@@ -8,6 +7,7 @@ const {
   TMDB_TV_BASE_URL,
   CAST_LIMIT,
 } = require("../config/config");
+const axios = require("../utils/axios");
 
 // Create URL with paramas
 const createUrl = function (baseURL, queryParams) {

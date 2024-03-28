@@ -50,15 +50,23 @@ const handleImgRequest = async function (msg) {
 
     if (!images) throw new Error("Posters Not Found");
 
-    let filterdPosters = images.posters.filter(
+    let filteredPosters = images.posters.filter(
       (poster) =>
         poster.iso_639_1 === "en" || poster.iso_639_1 === shortLanguage
     );
 
+    if (!filteredPosters || filteredPosters.length < 5) {
+      images.posters.forEach((item) => {
+        if (item.iso_639_1 === null) {
+          filteredPosters.push(item);
+        }
+      });
+    }
+
     const limitedPosters =
-      filterdPosters.length > POSTER_SENDING_LIMIT
-        ? filterdPosters.slice(0, POSTER_SENDING_LIMIT)
-        : filterdPosters;
+      filteredPosters.length > POSTER_SENDING_LIMIT
+        ? filteredPosters.slice(0, POSTER_SENDING_LIMIT)
+        : filteredPosters;
 
     // get image full links
     const posterUrls = limitedPosters.map(

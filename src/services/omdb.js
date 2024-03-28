@@ -1,5 +1,5 @@
-const { default: axios } = require("axios");
 const { OMDB_BASE_URL } = require("../config/config");
+const axios = require("../utils/axios");
 
 const createUrl = function (baseURL, queryParams) {
   const query = new URLSearchParams({ ...queryParams }).toString();
