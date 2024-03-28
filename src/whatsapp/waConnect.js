@@ -4,6 +4,8 @@ const {
   useMultiFileAuthState,
   fetchLatestBaileysVersion,
   makeCacheableSignalKeyStore,
+  makeInMemoryStore,
+  proto,
 } = require("@whiskeysockets/baileys");
 const { Boom } = require("@hapi/boom");
 // import * as fs from "fs";
@@ -17,11 +19,21 @@ require("dotenv").config();
 const logger = pino();
 logger.level = "fatal";
 
+// Setup Store
+const store = makeInMemoryStore({ logger });
+console.log(store);
+store?.readFromFile("./tvinfo_store.json");
+// save every 10s
+setInterval(() => {
+  store?.writeToFile("./tvinfo_store.json");
+}, 10_000);
+
 //node cache
 const msgRetryCounterCache = new NodeCache();
+const mediaCache = new NodeCache();
 
 async function connectToWhatsApp() {
-  const { state, saveCreds } = await useMultiFileAuthState("auth_info_baileys");
+  const { state, saveCreds } = await useMultiFileAuthState("auth_tvinfo");
   const { version, isLatest } = await fetchLatestBaileysVersion();
   console.log(`v${version.join(".")}, isLatest: ${isLatest}`);
   const sock = makeWASocket({
@@ -34,7 +46,11 @@ async function connectToWhatsApp() {
     },
     logger,
     msgRetryCounterCache,
+    mediaCache: mediaCache,
+    getMessage,
   });
+
+  store?.bind(sock.ev);
 
   sock.ev.process(async (events) => {
     if (events["connection.update"]) {
@@ -61,11 +77,23 @@ async function connectToWhatsApp() {
     }
   });
 
+  // Handle Messages
+  messageHandler(sock);
+
   // Initialize Custom Messages
   initializeCustomMessage(sock);
 
-  // Handle Messages
-  messageHandler(sock);
+  async function getMessage(key) {
+    if (store) {
+      const msg = await store.loadMessage(key.remoteJid, key.id);
+
+      console.log(key);
+      return msg?.message || undefined;
+    }
+
+    // Return a default message if the store is not present
+    return {};
+  }
 }
 
 module.exports = connectToWhatsApp;
