@@ -13,6 +13,7 @@ const pino = require("pino");
 const NodeCache = require("node-cache");
 const { initializeCustomMessage } = require("./message");
 const messageHandler = require("../handlers/messageHandler");
+const { MEDIA_CACHE } = require("../config/config");
 require("dotenv").config();
 
 //setup logger
@@ -29,7 +30,6 @@ setInterval(() => {
 
 //node cache
 const msgRetryCounterCache = new NodeCache();
-const mediaCache = new NodeCache();
 
 async function connectToWhatsApp() {
   const { state, saveCreds } = await useMultiFileAuthState("auth_tvinfo");
@@ -45,7 +45,6 @@ async function connectToWhatsApp() {
     },
     logger,
     msgRetryCounterCache,
-    mediaCache: mediaCache,
     getMessage,
   });
 

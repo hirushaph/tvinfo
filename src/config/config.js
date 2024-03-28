@@ -23,6 +23,40 @@ module.exports.OWNER_PHONE = ""; // phone number with country code
 module.exports.OWNER_NAME = "";
 
 /**
+ *  ========= CACHING ===========
+ */
+
+/**
+ * ===== API CACHE
+ * Cache API Requests
+ * Default expiration time is 1 hour.
+ * Using caching can be helpful when using this bot in large groups because the OMDB API free version only allows 1000 requests per day.
+ * For larger groups, consider using an cache expiration time of 1 day or more.
+ *
+ * Time Conversions:
+ * 1 hour = 3600000 milliseconds
+ * 12 hours = 43200000 milliseconds
+ * 1 day = 86400000 milliseconds
+ * 2 days = 172800000 milliseconds
+ */
+
+// time in miliseconds
+module.exports.API_CACHE_EXPIRE_TIME = 3600000;
+
+/**
+ * MEDIA CACHE
+ *
+ * Enable caching of media uploads to avoid re-uploading files within a defined time frame.
+ *
+ * Default :
+ * - Cache is enabled.
+ * - Expiration time is set to 1 day.
+ */
+
+module.exports.MEDIA_CACHE = false;
+module.exports.MEDIA_CACHE_EXPIRE_TIME = 86400000;
+
+/**
  * LIMITATIONS
  */
 module.exports.SEARCH_RESULT_LIMIT = 5;

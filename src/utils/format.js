@@ -1,6 +1,5 @@
 const { default: countryCodeEmoji } = require("country-code-emoji");
-const { getPosterUrl, getCast } = require("../services/tmdb");
-const { CAST_LIMIT } = require("../config/config");
+const { getPosterUrl } = require("../services/tmdb");
 const { getState } = require("./state");
 
 // get full language name form shortcode

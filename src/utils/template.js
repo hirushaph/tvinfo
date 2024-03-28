@@ -12,7 +12,7 @@ const singleMovie = function (item) {
               "🕔 ʀᴜɴᴛɪᴍᴇ    : " + item.runtime + "\n" +
               "🎭 ɢᴇɴʀᴇꜱ      : " + item.genres + "\n" +
               "🙋‍♀️ ᴄᴀꜱᴛ          : _" + item.cast + "_\n" +
-              (item.plot !=="n/a" ? `✍ ᴘʟᴏᴛ        : ${item.plot}` : '') +
+              (item.plot !=="n/a" ? `✍ ᴘʟᴏᴛ        : ${item.plot}\n` : '') +
               (item.tagline !=="n/a" ? `\n> ${item.tagline}` : '')
 
   return msg;
@@ -32,7 +32,7 @@ const singleTv = function (tv) {
               "🌎 ᴄᴏᴜɴᴛʀʏ    :  " + tv.country + "\n" +
               "🎭 ɢᴇɴʀᴇꜱ      :  " + tv.genres + "\n" +
               "⌛ ꜱᴛᴀᴛᴜꜱ     :  " + tv.status + "\n" +
-              (tv.plot !=="n/a" ? `📄 ᴘʟᴏᴛ        : ${tv.plot}` : '') +
+              (tv.plot !=="n/a" ? `📄 ᴘʟᴏᴛ        : ${tv.plot}\n` : '') +
               (tv.tagline !=="n/a" ? `\n> ${tv.tagline}` : '')
 
   return msg;
