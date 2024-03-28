@@ -22,6 +22,7 @@
   "dependencies": {
     "@whiskeysockets/baileys": "^6.6.0",
     "axios": "^1.6.8",
+    "axios-cache-interceptor": "^1.5.1",
     "country-code-emoji": "^2.3.0",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
