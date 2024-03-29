@@ -233,10 +233,11 @@ function sysInfo() {
 
   const platform = os.platform();
   const ram = process.memoryUsage();
+  const used = ram.heapTotal + ram.arrayBuffers + ram.external;
   const sysInfo = {
     appUptime: formatTime(appUptime),
     total: Math.round(totalRam / (1024 * 1024)),
-    used: Math.round(ram.heapUsed / 1024 / 1024),
+    used: Math.round(used / 1024 / 1024),
     free: Math.round(freeRam / (1024 * 1024)),
     platform,
   };
