@@ -229,6 +229,7 @@ function sysInfo() {
   const appUptime = process.uptime();
 
   const totalRam = os.totalmem();
+  const freeRam = os.freemem();
 
   const platform = os.platform();
   const ram = process.memoryUsage();
@@ -236,6 +237,7 @@ function sysInfo() {
     appUptime: formatTime(appUptime),
     total: Math.round(totalRam / (1024 * 1024)),
     used: Math.round(ram.heapUsed / 1024 / 1024),
+    free: Math.round(freeRam / (1024 * 1024)),
     platform,
   };
 
