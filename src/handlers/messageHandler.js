@@ -1,4 +1,5 @@
-const { SEARCH_RESULT_LIMIT } = require("../config/config");
+const { isJidGroup } = require("@whiskeysockets/baileys");
+const { SEARCH_RESULT_LIMIT, INBOX_DISABLED } = require("../config/config");
 const { getText, isQuoted } = require("../utils/helpers");
 const { markAsRead, sendReply } = require("../whatsapp/message");
 const processCommands = require("./commands/commandsHandler");
@@ -8,6 +9,10 @@ const messageHandler = async function (sock) {
   sock.ev.on("messages.upsert", async (m) => {
     // console.log(JSON.stringify(m, undefined, 2));
     const msg = m.messages[0];
+
+    if (!isJidGroup(msg.key.remoteJid) && INBOX_DISABLED) {
+      return;
+    }
 
     try {
       let msgText = getText(msg);
