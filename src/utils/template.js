@@ -49,6 +49,8 @@ const sysInfoMsg = function (info) {
 
 📦 Total Ram :  ${info.total} MB
 
+🆓 Free Ram :  ${info.free} MB
+
 ⚙ Hosted on : ${info.platform}
 
 ═══════ TᐯIᑎᖴO ═══════
