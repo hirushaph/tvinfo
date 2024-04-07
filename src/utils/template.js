@@ -1,6 +1,6 @@
 const singleMovie = function (item) {
   // prettier-ignore
-  const msg = `🧧 *${item.title} (${item.year})* \n\n` +
+  const msg = `*${item.title} (${item.year})* \n\n` +
               (item.isAdultRated ? `🔞 *18+* ${item.rated} Rated\n` : "") +
               "⭐ ɪᴍᴅʙ : " + item.imdb + "\n" + 
               (item.rottenTomatoes !== "n/a" ? `🍅 ʀᴏᴛᴛᴇɴ ᴛᴏᴍᴀᴛᴏᴇꜱ : ${item.rottenTomatoes}\n` : "") +
@@ -18,7 +18,7 @@ const singleMovie = function (item) {
 
 const singleTv = function (tv) {
   // prettier-ignore
-  const msg = `🎀 *${tv.title} (${tv.year})* \n\n` +
+  const msg = `*${tv.title} (${tv.year})* \n\n` +
               (tv.isAdultRated ? `🔞 *18+* ${tv.rated} Rated\n` : "") +
               "⭐ ɪᴍᴅʙ : " + tv.imdb + "\n" + 
               (tv.rottenTomatoes !== "n/a" ? `🍅 ʀᴏᴛᴛᴇɴ ᴛᴏᴍᴀᴛᴏᴇꜱ : ${tv.rottenTomatoes}\n` : "") +
