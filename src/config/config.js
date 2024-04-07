@@ -63,6 +63,8 @@ module.exports.SEARCH_RESULT_LIMIT = 5;
 // no of posters should send to user if user requested posters
 module.exports.POSTER_SENDING_LIMIT = 5;
 module.exports.CAST_LIMIT = 3;
+// If this enabled bot users can access bot only in inside groups , inbox disabled
+module.exports.INBOX_DISABLED = true;
 
 // API Settings
 /**
