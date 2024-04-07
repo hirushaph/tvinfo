@@ -12,7 +12,7 @@ module.exports.OMDB_BASE_URL = "http://www.omdbapi.com/";
  */
 
 module.exports.BOT_NAME = "Tvinfo";
-module.exports.BOT_COVER_IMAGE = "../assets/tvinfo_cover.jpg";
+module.exports.BOT_COVER_IMAGE = "src/assets/tvinfo_cover.jpg";
 
 /**
  * Owner Details
