@@ -41,7 +41,7 @@ module.exports.OWNER_NAME = "";
  */
 
 // time in miliseconds
-module.exports.API_CACHE_EXPIRE_TIME = 3600000;
+module.exports.API_CACHE_EXPIRE_TIME = 43200000;
 
 /**
  * MEDIA CACHE
