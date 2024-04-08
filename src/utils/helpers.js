@@ -94,7 +94,8 @@ function getQuery(msg) {
     if (match) {
       year = match[1];
     }
-    return { query, year };
+    const updatedQuery = query.replace(/\s+$/, ""); // remove last space
+    return { query: updatedQuery, year };
   }
   query = msg.split(" ").slice(1).join(" ") || undefined;
   return { query, year };
