@@ -22,6 +22,7 @@ const searchMovie = async function ({ query, year }) {
   try {
     let queryParams = {
       query,
+      language: "en-US",
       include_adult: false,
       page: 1,
     };

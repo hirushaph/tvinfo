@@ -5,7 +5,6 @@ const {
   fetchLatestBaileysVersion,
   makeCacheableSignalKeyStore,
   makeInMemoryStore,
-  proto,
 } = require("@whiskeysockets/baileys");
 const { Boom } = require("@hapi/boom");
 // import * as fs from "fs";
@@ -13,7 +12,6 @@ const pino = require("pino");
 const NodeCache = require("node-cache");
 const { initializeCustomMessage } = require("./message");
 const messageHandler = require("../handlers/messageHandler");
-const { MEDIA_CACHE } = require("../config/config");
 require("dotenv").config();
 
 //setup logger
