@@ -6,3 +6,4 @@ src/whatsapp/WaConnect1.js
 fly.toml
 Dockerfile
 tvinfo_store.json
+storage
