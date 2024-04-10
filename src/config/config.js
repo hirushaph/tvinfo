@@ -1,5 +1,5 @@
 // Exporting individual variables
-module.exports.TMDB_IMAGE_URL = "https://image.tmdb.org/t/p/w780";
+module.exports.TMDB_IMAGE_URL = "https://image.tmdb.org/t/p/original";
 module.exports.TMDB_MOVIE_BASE_URL = "https://api.themoviedb.org/3/movie/";
 module.exports.TMDB_TV_BASE_URL = "https://api.themoviedb.org/3/tv/";
 module.exports.TMDB_MOVIE_SEARCH_URL =
@@ -41,7 +41,7 @@ module.exports.OWNER_NAME = "";
  */
 
 // time in miliseconds
-module.exports.API_CACHE_EXPIRE_TIME = 3600000;
+module.exports.API_CACHE_EXPIRE_TIME = 43200000;
 
 /**
  * MEDIA CACHE
