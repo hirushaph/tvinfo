@@ -23,6 +23,7 @@ const searchMovie = async function ({ query, year }) {
     let queryParams = {
       query,
       include_adult: false,
+      language: "en-US",
       page: 1,
     };
 
@@ -41,6 +42,7 @@ const searchMovie = async function ({ query, year }) {
     };
 
     const res = await axios(options);
+
     const data = res.data;
 
     if (!data.results || data.results.length === 0)
