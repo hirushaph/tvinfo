@@ -54,7 +54,7 @@ module.exports.OMDB = true;
 module.exports.EXPRESS_PORT = 3001;
 
 // Api urls
-module.exports.TMDB_IMAGE_URL = "https://image.tmdb.org/t/p/w780";
+module.exports.TMDB_IMAGE_URL = "https://image.tmdb.org/t/p/original";
 module.exports.TMDB_MOVIE_BASE_URL = "https://api.themoviedb.org/3/movie/";
 module.exports.TMDB_TV_BASE_URL = "https://api.themoviedb.org/3/tv/";
 module.exports.TMDB_MOVIE_SEARCH_URL =
