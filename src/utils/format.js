@@ -76,7 +76,7 @@ const getRuntime = function (m) {
 const getPlot = function (plot) {
   const state = getState();
   const options = state.user.options;
-  if (options.includes("plot")) {
+  if (options?.includes("plot")) {
     return plot;
   }
   return;
