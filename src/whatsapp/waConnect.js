@@ -19,12 +19,12 @@ const logger = pino();
 logger.level = "fatal";
 
 // Setup Store
-const store = makeInMemoryStore({ logger });
-store?.readFromFile("./tvinfo_store.json");
-// save every 10s
-setInterval(() => {
-  store?.writeToFile("./tvinfo_store.json");
-}, 10_000);
+// const store = makeInMemoryStore({ logger });
+// store?.readFromFile("./tvinfo_store.json");
+// // save every 10s
+// setInterval(() => {
+//   store?.writeToFile("./tvinfo_store.json");
+// }, 10_000);
 
 //node cache
 const msgRetryCounterCache = new NodeCache();
@@ -43,10 +43,10 @@ async function connectToWhatsApp() {
     },
     logger,
     msgRetryCounterCache,
-    getMessage,
+    // getMessage,
   });
 
-  store?.bind(sock.ev);
+  // store?.bind(sock.ev);
 
   sock.ev.process(async (events) => {
     if (events["connection.update"]) {
@@ -83,7 +83,6 @@ async function connectToWhatsApp() {
     if (store) {
       const msg = await store.loadMessage(key.remoteJid, key.id);
 
-      console.log(key);
       return msg?.message || undefined;
     }
 
