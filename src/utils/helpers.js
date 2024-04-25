@@ -34,7 +34,7 @@ function isQuoted(msg) {
 }
 
 /**
- * Use this for commands with parameters
+ * Check commands with parameters
  * Ex : .mv moviename
  * @param {String} command - command need to check
  * @param {String} msg - message received from the user
@@ -51,6 +51,14 @@ const matchCommand = function (command, msg) {
   return false;
 };
 
+/**
+ * Check Single Command
+ *
+ * @param {string} command - Command need to check
+ * @param {object} msg - Message Recived From User
+ * @returns {boolean} - return true if successfull
+ */
+
 const singleCommand = function (command, msg) {
   if (command === msg) {
     if (!checkRoles(command, msg)) return;
@@ -58,6 +66,13 @@ const singleCommand = function (command, msg) {
   }
 };
 
+/**
+ * Check command permissions
+ *
+ * @param {string} command - Command
+ * @param {object} msg - Current message
+ * @returns
+ */
 const checkRoles = function (command, msg) {
   const state = getState();
 
@@ -78,10 +93,10 @@ const checkRoles = function (command, msg) {
 
 /**
  * Only for movie or tv search
- * Extracts the moviename and year from.
+ * Extracts the moviename and year
  *
  * @param {String} msg - The text message received from the user.
- * @returns {Object} - The extracted query and year if found, otherwise undefined.
+ * @returns {Object | undefined} - The extracted query and year if found, otherwise undefined.
  */
 function getQuery(msg) {
   let query = undefined;
@@ -107,6 +122,12 @@ function getTextParam(msg) {
   return query;
 }
 
+/**
+ * Get Message Text From Current Message Object
+ *
+ * @param {object} msg - Current Message Object
+ * @returns {string | undefined} - Message text or undefined
+ */
 function getText(msg) {
   if (isQuoted(msg)) {
     // return quoted text
