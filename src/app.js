@@ -11,7 +11,7 @@ app.get("/", (req, res) => {
   res.send("Hello");
 });
 
-app.listen("3000", () => {
+app.listen("3002", () => {
   console.log("Server Running in Port 3000");
 });
 
