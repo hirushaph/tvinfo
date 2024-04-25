@@ -7,7 +7,6 @@ const {
   makeInMemoryStore,
 } = require("@whiskeysockets/baileys");
 const { Boom } = require("@hapi/boom");
-// import * as fs from "fs";
 const pino = require("pino");
 const NodeCache = require("node-cache");
 const { initializeCustomMessage } = require("./message");
@@ -16,15 +15,19 @@ require("dotenv").config();
 
 //setup logger
 const logger = pino();
-logger.level = "fatal";
+logger.level = "debug";
 
-// Setup Store
+/**
+ * Store Messages In Memory
+ * This cause high memeory usage on server
+ */
+
 // const store = makeInMemoryStore({ logger });
 // store?.readFromFile("./tvinfo_store.json");
-// // save every 10s
+
 // setInterval(() => {
 //   store?.writeToFile("./tvinfo_store.json");
-// }, 10_000);
+// }, 10000);
 
 //node cache
 const msgRetryCounterCache = new NodeCache();
@@ -65,8 +68,6 @@ async function connectToWhatsApp() {
       } else if (connection === "open") {
         console.log("Connected 🙃");
       }
-
-      //   console.log("connection update", update);
     }
     if (events["creds.update"]) {
       await saveCreds();
@@ -79,16 +80,21 @@ async function connectToWhatsApp() {
   // Initialize Custom Messages
   initializeCustomMessage(sock);
 
-  async function getMessage(key) {
-    if (store) {
-      const msg = await store.loadMessage(key.remoteJid, key.id);
+  /**
+   * Load Stored Messages
+   *
+   */
 
-      return msg?.message || undefined;
-    }
+  // async function getMessage(key) {
+  //   if (store) {
+  //     const msg = await store.loadMessage(key.remoteJid, key.id);
 
-    // Return a default message if the store is not present
-    return {};
-  }
+  //     return msg?.message || undefined;
+  //   }
+
+  //   // Return a default message if the store is not present
+  //   return {};
+  // }
 }
 
 module.exports = connectToWhatsApp;
