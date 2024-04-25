@@ -4,10 +4,8 @@ const {
   useMultiFileAuthState,
   fetchLatestBaileysVersion,
   makeCacheableSignalKeyStore,
-  makeInMemoryStore,
 } = require("@whiskeysockets/baileys");
 const { Boom } = require("@hapi/boom");
-// import * as fs from "fs";
 const pino = require("pino");
 const NodeCache = require("node-cache");
 const { initializeCustomMessage } = require("./message");
@@ -16,15 +14,7 @@ require("dotenv").config();
 
 //setup logger
 const logger = pino();
-logger.level = "fatal";
-
-// Setup Store
-// const store = makeInMemoryStore({ logger });
-// store?.readFromFile("./tvinfo_store.json");
-// // save every 10s
-// setInterval(() => {
-//   store?.writeToFile("./tvinfo_store.json");
-// }, 10_000);
+logger.level = "debug";
 
 //node cache
 const msgRetryCounterCache = new NodeCache();
@@ -43,7 +33,6 @@ async function connectToWhatsApp() {
     },
     logger,
     msgRetryCounterCache,
-    // getMessage,
   });
 
   // store?.bind(sock.ev);
@@ -65,8 +54,6 @@ async function connectToWhatsApp() {
       } else if (connection === "open") {
         console.log("Connected 🙃");
       }
-
-      //   console.log("connection update", update);
     }
     if (events["creds.update"]) {
       await saveCreds();
@@ -78,17 +65,6 @@ async function connectToWhatsApp() {
 
   // Initialize Custom Messages
   initializeCustomMessage(sock);
-
-  async function getMessage(key) {
-    if (store) {
-      const msg = await store.loadMessage(key.remoteJid, key.id);
-
-      return msg?.message || undefined;
-    }
-
-    // Return a default message if the store is not present
-    return {};
-  }
 }
 
 module.exports = connectToWhatsApp;
