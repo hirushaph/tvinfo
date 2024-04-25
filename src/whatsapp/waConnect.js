@@ -4,7 +4,6 @@ const {
   useMultiFileAuthState,
   fetchLatestBaileysVersion,
   makeCacheableSignalKeyStore,
-  makeInMemoryStore,
 } = require("@whiskeysockets/baileys");
 const { Boom } = require("@hapi/boom");
 const pino = require("pino");
@@ -16,18 +15,6 @@ require("dotenv").config();
 //setup logger
 const logger = pino();
 logger.level = "debug";
-
-/**
- * Store Messages In Memory
- * This cause high memeory usage on server
- */
-
-// const store = makeInMemoryStore({ logger });
-// store?.readFromFile("./tvinfo_store.json");
-
-// setInterval(() => {
-//   store?.writeToFile("./tvinfo_store.json");
-// }, 10000);
 
 //node cache
 const msgRetryCounterCache = new NodeCache();
@@ -46,7 +33,6 @@ async function connectToWhatsApp() {
     },
     logger,
     msgRetryCounterCache,
-    // getMessage,
   });
 
   // store?.bind(sock.ev);
@@ -79,22 +65,6 @@ async function connectToWhatsApp() {
 
   // Initialize Custom Messages
   initializeCustomMessage(sock);
-
-  /**
-   * Load Stored Messages
-   *
-   */
-
-  // async function getMessage(key) {
-  //   if (store) {
-  //     const msg = await store.loadMessage(key.remoteJid, key.id);
-
-  //     return msg?.message || undefined;
-  //   }
-
-  //   // Return a default message if the store is not present
-  //   return {};
-  // }
 }
 
 module.exports = connectToWhatsApp;
