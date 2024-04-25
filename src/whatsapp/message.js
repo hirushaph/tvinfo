@@ -10,11 +10,11 @@ function initializeCustomMessage(socket) {
 }
 
 /**
- * Sends a reply message using the provided socket and message content.
+ * Sends a reply message with quoted parent message
  *
  * @param {string} text - The message content to be sent as a reply.
  * @param {Object} msg - current message context
- * @returns {Promise<void>} - A promise that resolves when the message is sent successfully.
+ * @returns {Promise} - A promise that resolves when the message is sent successfully.
  *
  */
 async function sendReply(text, msg) {
@@ -27,6 +27,15 @@ async function sendReply(text, msg) {
   );
 }
 
+/**
+ *
+ * Send Image With Caption
+ *
+ * @param {string} text - Caption Text
+ * @param {string} url - Media Path or URL
+ * @param {string} msg - Message Context
+ * @returns {Promise<object>} - Return a pormise that reslove sended info
+ */
 async function sendMediaMessage(text, url, msg) {
   // await randomDelay();
   // await sendMessageWTyping(msg.key.remoteJid);
@@ -43,10 +52,13 @@ async function sendMediaMessage(text, url, msg) {
   return reply;
 }
 
-// async function sendTextMessage(userId, text) {
-//   return await sock.sendMessage(userId, { text: text });
-// }
-
+/**
+ * Send Image without Caption
+ *
+ * @param {string} url - Image URL or Path
+ * @param {object} msg - Message Context
+ * @returns {Promise<object>} - Return a pormise that reslove sended info
+ */
 async function sendImage(url, msg) {
   // await randomDelay();
   return await sock.sendMessage(
@@ -59,14 +71,23 @@ async function sendImage(url, msg) {
     { quoted: msg }
   );
 }
-// async function sendMessage(text, msg) {
-//   return await sock.sendMessage(msg.key.remoteJid, { text }, { quoted: msg });
-// }
 
+/**
+ * Mark Message As Seen
+ *
+ * @param {object} msg - Message Object
+ * @returns {Promise}
+ */
 async function markAsRead(msg) {
   return await sock.readMessages([msg.key]);
 }
 
+/**
+ *
+ * Send Typing Status
+ *
+ * @param {string} jid - User RemoteJID
+ */
 async function sendMessageWTyping(jid) {
   await sock.presenceSubscribe(jid);
   await delay(200);
