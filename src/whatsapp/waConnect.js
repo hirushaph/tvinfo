@@ -14,7 +14,7 @@ require("dotenv").config();
 
 //setup logger
 const logger = pino();
-logger.level = "debug";
+logger.level = "fatal";
 
 //node cache
 const msgRetryCounterCache = new NodeCache();
