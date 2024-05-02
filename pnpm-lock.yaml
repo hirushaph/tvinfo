@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@whiskeysockets/baileys':
-        specifier: ^6.6.0
-        version: 6.6.0(qrcode-terminal@0.12.0)
+        specifier: ^6.7.1
+        version: 6.7.1(qrcode-terminal@0.12.0)
       axios:
         specifier: ^1.6.8
         version: 1.6.8
@@ -121,12 +121,12 @@ packages:
   '@protobufjs/utf8@1.1.0':
     resolution: {integrity: sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==}
 
-  '@thi.ng/bitstream@2.2.54':
-    resolution: {integrity: sha512-iKlGo0xkVUEq/zuxRUt5N9D2yLjAIPXuiMg8TX+kQrwhT64rItrvr/YV8+jBNsIiLLgu3G+wOhx4iGh7YVMQhg==}
+  '@thi.ng/bitstream@2.2.59':
+    resolution: {integrity: sha512-9YEzjujV/rU/510z0Ht2jgPVsWakseXDxPaacW0nKCd/QxGd4TTeuSkehf/SOKoRLfeUpApbJcbk8gIbZJdAOQ==}
     engines: {node: '>=18'}
 
-  '@thi.ng/errors@2.5.1':
-    resolution: {integrity: sha512-GRRT8z5ZsOY2r4UzteTC2IhnnYI+cqponKGKjHFsj1UitPEdHQ7Jl1yB3b/Vfy4aXqrgTIf2BLE9Q3P06i2+9w==}
+  '@thi.ng/errors@2.5.6':
+    resolution: {integrity: sha512-i2mNaye+ieK3lIugMRdjac12vgnwyq52wE6dMSF/PRN1hciY+zV+q9VObbL1X19Nqy/G5xMghIrzDOeIRcObLg==}
     engines: {node: '>=18'}
 
   '@tokenizer/token@0.3.0':
@@ -141,8 +141,8 @@ packages:
   '@types/node@10.17.60':
     resolution: {integrity: sha512-F0KIgDJfy2nA3zMLmWGKxcH2ZVEtCZXHHdOQs2gSaQ27+lNeEfGxzkIw90aXswATX7AZ33tahPbzy6KAfUreVw==}
 
-  '@types/node@20.11.30':
-    resolution: {integrity: sha512-dHM6ZxwlmuZaRmUPfv1p+KrdD1Dci04FbdEm/9wEMouFqxYoFl5aMkt0VMAUtYRQDyYvD41WJLukhq/ha3YuTw==}
+  '@types/node@20.12.8':
+    resolution: {integrity: sha512-NU0rJLJnshZWdE/097cdCBbyW1h4hEg0xpovcoAQYHl8dnEyp/NAOiE45pvc+Bd1Dt+2r94v2eGFpQJ4R7g+2w==}
 
   '@types/webidl-conversions@7.0.3':
     resolution: {integrity: sha512-CiJJvcRtIgzadHCYXw7dqEnMNRjhGZlYK05Mj9OyktqV8uVT8fD2BFOB7S1uwBE3Kj2Z+4UyPmFw/Ixgw/LAlA==}
@@ -162,8 +162,8 @@ packages:
   '@wasm-audio-decoders/ogg-vorbis@0.1.15':
     resolution: {integrity: sha512-skAN3NIrRzMkVouyfyq3gYT/op/K9iutMZr7kr5/9fnIaCnpYdrdbv69X8PZ6y3K2J5zy5KuGno5kzH8yGLOOg==}
 
-  '@whiskeysockets/baileys@6.6.0':
-    resolution: {integrity: sha512-4aIPHztdLZP24Qac7mudZTMR7qIsEDQxlpCBJE4atYHFAa5tlwCGPcUy249q3aaayxYtQAwheVG42L6AkRxAwg==}
+  '@whiskeysockets/baileys@6.7.1':
+    resolution: {integrity: sha512-O4YHVNwDmIfFeakbo8uGuOG6r148++1A+fPec2/5L+gyD9Bq1kqMJN8H+hp6YkVLIYQc6UHbG+J7+5dzDcLMfQ==}
     peerDependencies:
       jimp: ^0.16.1
       link-preview-js: ^3.0.0
@@ -745,8 +745,8 @@ packages:
     resolution: {integrity: sha512-Y+CjUfLmIpoUCCRl0ub4smrYtGGr5AOa2AKOaWelGHOGz33X/Y/KizefGqbkwfz44+cnq/+9habclf8vOmu2LA==}
     engines: {node: '>=0.2.0'}
 
-  libphonenumber-js@1.10.58:
-    resolution: {integrity: sha512-53A0IpJFL9LdHbpeatwizf8KSwPICrqn9H0g3Y7WQ+Jgeu9cQ4Ew3WrRtrLBu/CX2lXd5+rgT01/tGlkbkzOjw==}
+  libphonenumber-js@1.10.61:
+    resolution: {integrity: sha512-TsQsyzDttDvvzWNkbp/i0fVbzTGJIG0mUu/uNalIaRQEYeJxVQ/FPg+EJgSqfSXezREjM0V3RZ8cLVsKYhhw0Q==}
 
   libsignal@https://codeload.github.com/adiwajshing/libsignal-node/tar.gz/11dbd962ea108187c79a7c46fe4d6f790e23da97:
     resolution: {tarball: https://codeload.github.com/adiwajshing/libsignal-node/tar.gz/11dbd962ea108187c79a7c46fe4d6f790e23da97}
@@ -1339,8 +1339,8 @@ packages:
       utf-8-validate:
         optional: true
 
-  ws@8.16.0:
-    resolution: {integrity: sha512-HS0c//TP7Ina87TfiPUz1rQzMhHrl/SG2guqRcTOIUYD2q8uhUdNHZYJUaQ8aTGPzCh+c6oawMKW35nFl1dxyQ==}
+  ws@8.17.0:
+    resolution: {integrity: sha512-uJq6108EgZMAl20KagGkzCKfMEjxmKvZHG7Tlq0Z6nOky7YF7aq4mOx6xK8TJ/i1LeK4Qus7INktacctDgY8Ow==}
     engines: {node: '>=10.0.0'}
     peerDependencies:
       bufferutil: ^4.0.1
@@ -1491,11 +1491,11 @@ snapshots:
 
   '@protobufjs/utf8@1.1.0': {}
 
-  '@thi.ng/bitstream@2.2.54':
+  '@thi.ng/bitstream@2.2.59':
     dependencies:
-      '@thi.ng/errors': 2.5.1
+      '@thi.ng/errors': 2.5.6
 
-  '@thi.ng/errors@2.5.1': {}
+  '@thi.ng/errors@2.5.6': {}
 
   '@tokenizer/token@0.3.0': {}
 
@@ -1505,7 +1505,7 @@ snapshots:
 
   '@types/node@10.17.60': {}
 
-  '@types/node@20.11.30':
+  '@types/node@20.12.8':
     dependencies:
       undici-types: 5.26.5
 
@@ -1534,7 +1534,7 @@ snapshots:
       '@wasm-audio-decoders/common': 9.0.5
       codec-parser: 2.4.3
 
-  '@whiskeysockets/baileys@6.6.0(qrcode-terminal@0.12.0)':
+  '@whiskeysockets/baileys@6.7.1(qrcode-terminal@0.12.0)':
     dependencies:
       '@adiwajshing/keyed-db': 0.2.4
       '@hapi/boom': 9.1.4
@@ -1542,14 +1542,14 @@ snapshots:
       axios: 1.6.8
       cache-manager: 4.0.1
       futoin-hkdf: 1.5.3
-      libphonenumber-js: 1.10.58
+      libphonenumber-js: 1.10.61
       libsignal: https://codeload.github.com/adiwajshing/libsignal-node/tar.gz/11dbd962ea108187c79a7c46fe4d6f790e23da97
       music-metadata: 7.14.0
       node-cache: 5.1.2
       pino: 7.11.0
       protobufjs: 7.2.6
       uuid: 9.0.1
-      ws: 8.16.0
+      ws: 8.17.0
     optionalDependencies:
       qrcode-terminal: 0.12.0
     transitivePeerDependencies:
@@ -2139,7 +2139,7 @@ snapshots:
 
   lazy@1.0.11: {}
 
-  libphonenumber-js@1.10.58: {}
+  libphonenumber-js@1.10.61: {}
 
   libsignal@https://codeload.github.com/adiwajshing/libsignal-node/tar.gz/11dbd962ea108187c79a7c46fe4d6f790e23da97:
     dependencies:
@@ -2474,7 +2474,7 @@ snapshots:
       '@protobufjs/path': 1.1.2
       '@protobufjs/pool': 1.1.0
       '@protobufjs/utf8': 1.1.0
-      '@types/node': 20.11.30
+      '@types/node': 20.12.8
       long: 5.2.3
 
   proxy-addr@2.0.7:
@@ -2501,7 +2501,7 @@ snapshots:
 
   qoa-format@1.0.1:
     dependencies:
-      '@thi.ng/bitstream': 2.2.54
+      '@thi.ng/bitstream': 2.2.59
 
   qrcode-terminal@0.12.0: {}
 
@@ -2778,7 +2778,7 @@ snapshots:
 
   ws@7.5.9: {}
 
-  ws@8.16.0: {}
+  ws@8.17.0: {}
 
   y18n@5.0.8: {}
 
