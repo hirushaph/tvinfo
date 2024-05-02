@@ -17,7 +17,7 @@ const logger = pino();
 logger.level = "fatal";
 
 //node cache
-// const msgRetryCounterCache = new NodeCache();
+const msgRetryCounterCache = new NodeCache();
 
 async function connectToWhatsApp() {
   const { state, saveCreds } = await useMultiFileAuthState("auth_tvinfo");
@@ -32,7 +32,7 @@ async function connectToWhatsApp() {
       keys: makeCacheableSignalKeyStore(state.keys, logger),
     },
     logger,
-    // msgRetryCounterCache,
+    msgRetryCounterCache,
   });
 
   sock.ev.process(async (events) => {
