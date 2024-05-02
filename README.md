@@ -59,7 +59,7 @@ Once the bot is running and configured with your WhatsApp account, you can inter
 
     git clone https://github.com/hirushaph/tvinfo
     cd tvinfo
-    npm install
+    yarn install
 
 <br>
 
