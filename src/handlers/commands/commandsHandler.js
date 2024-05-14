@@ -24,6 +24,8 @@ const {
 } = require("./commands");
 
 const processCommands = async function (sock, msg) {
+  // Mark as read
+  await markAsRead(msg);
   // get text message
   let msgText = getText(msg);
   const userId = getUserId(msg);
@@ -49,43 +51,36 @@ const processCommands = async function (sock, msg) {
 
     // Handle Movies
     if (matchCommand(".mv", msgText)) {
-      await markAsRead(msg);
       await handleMovies(msgText, msg);
     }
 
     // Handle Tv Series
     if (matchCommand(".tv", msgText)) {
-      await markAsRead(msg);
       await handleTvseries(msgText, msg);
     }
 
     if (msgText === ".about") {
-      await markAsRead(msg);
       await sendReply("Helllo", msg);
     }
 
     // User Options
 
     if (matchCommand(".add", msgText)) {
-      await markAsRead(msg);
       await handleAddOptions(msgText, msg);
     }
 
     if (matchCommand(".remove", msgText)) {
-      await markAsRead(msg);
       await handleRemoveOptions(msgText, msg);
     }
 
     // Information commands
     if (singleCommand(".status", msgText)) {
-      await markAsRead(msg);
       await handleSystemInfo(msg);
     }
 
     // Admin Commands
 
     if (singleCommand(".restart", msgText)) {
-      await markAsRead(msg);
       restart();
     }
 
