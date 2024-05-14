@@ -1,6 +1,6 @@
 {
   "name": "tvinfo",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Movie and Tv Series info bot",
   "type": "commonjs",
   "main": "app.js",
