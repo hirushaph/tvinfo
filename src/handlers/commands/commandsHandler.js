@@ -78,12 +78,14 @@ const processCommands = async function (sock, msg) {
 
     // Information commands
     if (singleCommand(".status", msgText)) {
+      await markAsRead(msg);
       await handleSystemInfo(msg);
     }
 
     // Admin Commands
 
     if (singleCommand(".restart", msgText)) {
+      await markAsRead(msg);
       restart();
     }
 
