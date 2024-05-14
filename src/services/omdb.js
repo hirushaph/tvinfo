@@ -11,6 +11,7 @@ const getOmdbMovie = async function (id) {
   const url = createUrl(OMDB_BASE_URL, {
     apikey: process.env.OMDB_KEY,
     i: id,
+    plot: "short",
   });
 
   try {
