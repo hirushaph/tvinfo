@@ -29,7 +29,7 @@ const formatSingleMovie = function (tmdb, omdb) {
     rated: omdb.Rated || "n/a",
     isAdultRated: isAdultRated(omdb.Rated),
     cast: getCastNames(tmdb.cast) || "n/a",
-    plot: getPlot(tmdb.overview) || "n/a",
+    plot: getPlot(tmdb.overview, omdb.Plot) || "n/a",
   };
 
   return formatedMovie;
@@ -53,7 +53,7 @@ const formatSingleTv = function (tmdb, omdb) {
     isAdultRated: isAdultRated(omdb.Rated),
     status: tmdb.status || "n/a",
     seasons: tmdb.number_of_seasons || "n/a",
-    plot: getPlot(tmdb.overview) || "n/a",
+    plot: getPlot(tmdb.overview, omdb.Plot) || "n/a",
   };
 
   return formatedTv;
@@ -73,11 +73,11 @@ const getRuntime = function (m) {
   }
 };
 
-const getPlot = function (plot) {
+const getPlot = function (tmdbPlot, omdbPlot) {
   const state = getState();
   const options = state.user.options;
   if (options?.includes("plot")) {
-    return plot;
+    return omdbPlot || tmdbPlot;
   }
   return;
 };
