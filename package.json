@@ -19,18 +19,18 @@
   "author": "hirusha",
   "license": "ISC",
   "dependencies": {
-    "@whiskeysockets/baileys": "^6.7.2",
-    "axios": "^1.6.8",
-    "axios-cache-interceptor": "^1.5.2",
+    "@whiskeysockets/baileys": "^6.7.5",
+    "axios": "^1.7.4",
+    "axios-cache-interceptor": "^1.5.3",
     "country-code-emoji": "^2.3.0",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
-    "mongoose": "^8.3.4",
+    "mongoose": "^8.5.3",
     "node-cache": "^5.1.2",
-    "pm2": "^5.3.1",
+    "pm2": "^5.4.2",
     "qrcode-terminal": "^0.12.0"
   },
   "devDependencies": {
-    "@flydotio/dockerfile": "^0.5.7"
+    "@flydotio/dockerfile": "^0.5.8"
   }
 }
