@@ -19,7 +19,7 @@ const formatSingleMovie = function (tmdb, omdb) {
     year: tmdb.release_date.substring(0, 4) || "n/a",
     genres: getGenres(tmdb.genres) || "n/a",
     country: getCountry(tmdb.production_countries) || "n/a",
-    countryEmoji: getCountryEmoji(tmdb.production_countries) || "n/a",
+    countryEmoji: getCountryEmoji(tmdb.production_countries) || "🌍",
     language: languageNames.of(tmdb.original_language) || "n/a",
     tagline: tmdb.tagline || "n/a",
     imdb: getRatings(omdb.Ratings, "Internet Movie Database") || "n/a",
