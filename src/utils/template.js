@@ -6,7 +6,7 @@ const singleMovie = function (item) {
               (item.rottenTomatoes !== "n/a" ? `🍅 ʀᴏᴛᴛᴇɴ ᴛᴏᴍᴀᴛᴏᴇꜱ : ${item.rottenTomatoes}\n` : "") +
               ((item.rottenTomatoes === "n/a" && item.imdb === "n/a") ? ` 🌟 Rating : ${item.tmdbRating}\n` : "") +
               "\n🔤 ʟᴀɴɢᴜᴀɢᴇ  : " + item.language + "\n" +
-              "🌎 ᴄᴏᴜɴᴛʀʏ    : " + item.country + "\n" +
+              +item.countryEmoji+" ᴄᴏᴜɴᴛʀʏ    : " + item.country + "\n" +
               "🕔 ʀᴜɴᴛɪᴍᴇ    : " + item.runtime + "\n" +
               "🎭 ɢᴇɴʀᴇꜱ      : " + item.genres + "\n" +
               "🙋‍♀️ ᴄᴀꜱᴛ          : _" + item.cast + "_\n" +
