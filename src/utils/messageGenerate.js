@@ -2,10 +2,7 @@ const searchResultGen = function (data) {
   let ids = [];
 
   // prettier-ignore
-  let msg =
-`╔
-║  ꜱᴇᴀʀᴄʜ ʀᴇꜱᴜʟᴛꜱ 
-╚═════════════\n\n`;
+  let msg =`═══  *ꜱᴇᴀʀᴄʜ ʀᴇꜱᴜʟᴛꜱ*  ═══\n\n`;
 
   data.forEach((element, i) => {
     msg += `*${i + 1}*.  ${element.title} (${element.year}),  _${
@@ -16,8 +13,7 @@ const searchResultGen = function (data) {
 
   // prettier-ignore
   msg += 
-`☆ ᴄʜᴏᴏꜱᴇ ᴏɴᴇ ɪᴛᴇᴍ ʙʏ ɴᴜᴍʙᴇʀ ☆
-╰────`
+`☆ *_ᴄʜᴏᴏꜱᴇ ᴏɴᴇ ɪᴛᴇᴍ ʙʏ ɴᴜᴍʙᴇʀ_* ☆`
 
   return { msg, ids };
 };
