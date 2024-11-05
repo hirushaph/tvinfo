@@ -2,8 +2,7 @@ const searchResultGen = function (data) {
   let ids = [];
 
   // prettier-ignore
-  let msg =
-`═══  *ꜱᴇᴀʀᴄʜ ʀᴇꜱᴜʟᴛꜱ*  ═══\n\n\n`;
+  let msg =`═══  *ꜱᴇᴀʀᴄʜ ʀᴇꜱᴜʟᴛꜱ*  ═══\n\n`;
 
   data.forEach((element, i) => {
     msg += `*${i + 1}*.  ${element.title} (${element.year}),  _${
