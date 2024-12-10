@@ -8,7 +8,7 @@ const singleMovie = function (item) {
               "\n🔤 ʟᴀɴɢᴜᴀɢᴇ  : " + item.language + "\n" +
               item.countryEmoji+" ᴄᴏᴜɴᴛʀʏ    : " + item.country + "\n" +
               "🕔 ʀᴜɴᴛɪᴍᴇ    : " + item.runtime + "\n" +
-              (item.released !== true ? "📆 ʀᴇʟᴇᴀꜱᴇᴅ   :" : "📆 ʀᴇʟᴇᴀꜱᴇ    : ") + item.releaseDate + "\n" +
+              (item.released !== true ? "📆 ʀᴇʟᴇᴀꜱᴇᴅ   : " : "📆 ʀᴇʟᴇᴀꜱᴇ    : ") + item.releaseDate + "\n" +
               "🎭 ɢᴇɴʀᴇꜱ      : " + item.genres + "\n" +
               "🙋‍♀️ ᴄᴀꜱᴛ          : _" + item.cast + "_\n" +
               (item.plot !=="n/a" ? `✍ ᴘʟᴏᴛ        : ${item.plot}\n` : '') +
