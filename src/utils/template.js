@@ -1,13 +1,14 @@
 const singleMovie = function (item) {
   // prettier-ignore
-  const msg = `*${item.title} (${item.year})* \n\n` +
+  const msg = `*${item.title} (${item.year})* ${item.language !== "English" ? "| `"+item.originalName+"`":""} \n\n` +
               (item.isAdultRated ? `🔞 *18+* ${item.rated} Rated\n` : "") +
-              (item.imdb ? `⭐ ɪᴍᴅʙ : ${item.imdb}\n` : "") +
+              (item.imdb !== "n/a" ? `⭐ ɪᴍᴅʙ : ${item.imdb}\n` : "") +
               (item.rottenTomatoes !== "n/a" ? `🍅 ʀᴏᴛᴛᴇɴ ᴛᴏᴍᴀᴛᴏᴇꜱ : ${item.rottenTomatoes}\n` : "") +
               ((item.rottenTomatoes === "n/a" && item.imdb === "n/a") ? `🌟 Rating : ${item.tmdbRating}\n` : "") +
               "\n🔤 ʟᴀɴɢᴜᴀɢᴇ  : " + item.language + "\n" +
               item.countryEmoji+" ᴄᴏᴜɴᴛʀʏ    : " + item.country + "\n" +
               "🕔 ʀᴜɴᴛɪᴍᴇ    : " + item.runtime + "\n" +
+              (item.released !== true ? "📆 ʀᴇʟᴇᴀꜱᴇᴅ   : " : "📆 ʀᴇʟᴇᴀꜱᴇ    : ") + item.releaseDate + "\n" +
               "🎭 ɢᴇɴʀᴇꜱ      : " + item.genres + "\n" +
               "🙋‍♀️ ᴄᴀꜱᴛ          : _" + item.cast + "_\n" +
               (item.plot !=="n/a" ? `✍ ᴘʟᴏᴛ        : ${item.plot}\n` : '') +
@@ -26,7 +27,7 @@ const singleTv = function (tv) {
               "\n📂 ꜱᴇᴀꜱᴏɴꜱ    :  " + tv.seasons + "\n" +
               "🔤 ʟᴀɴɢᴜᴀɢᴇ  :  " + tv.language + "\n" +
               "🌎 ᴄᴏᴜɴᴛʀʏ    :  " + tv.country + "\n" +
-              "🎭 ɢᴇɴʀᴇꜱ      :  " + tv.genres + "\n" +
+              "🎭 ɢᴇɴʀᴇꜱ      :  *" + tv.genres + "*\n" +
               "⌛ ꜱᴛᴀᴛᴜꜱ     :  " + tv.status + "\n" +
               (tv.plot !=="n/a" ? `📄 ᴘʟᴏᴛ        : ${tv.plot}\n` : '') +
               (tv.tagline !=="n/a" ? `\n> ${tv.tagline}` : '')
