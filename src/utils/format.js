@@ -32,8 +32,9 @@ const formatSingleMovie = function (tmdb, omdb) {
     plot: getPlot(tmdb.overview, omdb.Plot) || "n/a",
     releaseDate: tmdb?.release_date?.split("-").join("/"),
     released: getReleasedStatus(),
+    originalName: tmdb?.original_title,
   };
-  console.log(formatedMovie);
+
   return formatedMovie;
 };
 
