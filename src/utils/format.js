@@ -30,8 +30,10 @@ const formatSingleMovie = function (tmdb, omdb) {
     isAdultRated: isAdultRated(omdb.Rated),
     cast: getCastNames(tmdb.cast) || "n/a",
     plot: getPlot(tmdb.overview, omdb.Plot) || "n/a",
+    releaseDate: tmdb?.release_date?.split("-").join("/"),
+    released: getReleasedStatus(),
   };
-
+  console.log(formatedMovie);
   return formatedMovie;
 };
 
@@ -54,6 +56,8 @@ const formatSingleTv = function (tmdb, omdb) {
     status: tmdb.status || "n/a",
     seasons: tmdb.number_of_seasons || "n/a",
     plot: getPlot(tmdb.overview, omdb.Plot) || "n/a",
+    releaseDate: tmdb?.release_date?.split("-").join("/") || "n/a",
+    released: getReleasedStatus(),
   };
 
   return formatedTv;
@@ -123,6 +127,34 @@ const isAdultRated = function (rate) {
   const adult_ratings = ["R", "NC-17"];
 
   return adult_ratings.includes(rate);
+};
+
+const getReleasedStatus = function (date) {
+  if (!date) return false;
+  const releaseDate = new Date(date);
+  const today = new Date();
+
+  console.log(releaseDate);
+  console.log("j");
+
+  const releaseDateOnly = new Date(
+    releaseDate.getFullYear(),
+    releaseDate.getMonth(),
+    releaseDate.getDate()
+  );
+  const todayOnly = new Date(
+    today.getFullYear(),
+    today.getMonth(),
+    today.getDate()
+  );
+
+  // Compare dates
+  if (releaseDateOnly < todayOnly) {
+    console.log("helllo");
+    return true;
+  } else {
+    return false;
+  }
 };
 
 module.exports = { formatSingleMovie, formatSingleTv };
