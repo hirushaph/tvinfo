@@ -20,12 +20,12 @@
   "license": "ISC",
   "dependencies": {
     "@whiskeysockets/baileys": "^6.7.9",
-    "axios": "^1.7.8",
+    "axios": "^1.7.9",
     "axios-cache-interceptor": "^1.6.2",
     "country-code-emoji": "^2.3.0",
-    "dotenv": "^16.4.5",
-    "express": "^4.21.1",
-    "mongoose": "^8.8.3",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mongoose": "^8.8.4",
     "node-cache": "^5.1.2",
     "pm2": "^5.4.3",
     "qrcode-terminal": "^0.12.0"
