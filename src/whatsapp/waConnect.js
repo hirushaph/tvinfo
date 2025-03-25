@@ -17,7 +17,7 @@ const logger = pino();
 logger.level = "fatal";
 
 //node cache
-// const msgRetryCounterCache = new NodeCache();
+const msgRetryCounterCache = new NodeCache();
 const groupCache = new NodeCache({ stdTTL: 5 * 60, useClones: false });
 
 async function connectToWhatsApp() {

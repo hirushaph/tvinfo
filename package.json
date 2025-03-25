@@ -20,15 +20,16 @@
   "license": "ISC",
   "dependencies": {
     "@whiskeysockets/baileys": "^6.7.16",
-    "axios": "^1.8.2",
-    "axios-cache-interceptor": "^1.6.2",
+    "axios": "^1.8.4",
+    "axios-cache-interceptor": "^1.7.0",
     "country-code-emoji": "^2.3.0",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
-    "mongoose": "^8.12.1",
+    "mongoose": "^8.13.0",
     "node-cache": "^5.1.2",
-    "pm2": "^5.4.3",
-    "qrcode-terminal": "^0.12.0"
+    "pm2": "^6.0.5",
+    "qrcode-terminal": "^0.12.0",
+    "sharp": "^0.33.5"
   },
   "devDependencies": {}
 }
