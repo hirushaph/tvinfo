@@ -12,7 +12,7 @@ const { initializeCustomMessage } = require("./message");
 const messageHandler = require("../handlers/messageHandler");
 require("dotenv").config();
 
-import QRCode from "qrcode";
+const QRCode = require("qrcode");
 
 //setup logger
 const logger = pino();
