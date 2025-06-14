@@ -28,7 +28,7 @@
     "mongoose": "^8.15.2",
     "node-cache": "^5.1.2",
     "pm2": "^6.0.8",
-    "qrcode-terminal": "^0.12.0",
+    "qrcode": "^1.5.4",
     "sharp": "^0.33.5"
   },
   "devDependencies": {}

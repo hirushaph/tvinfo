@@ -12,6 +12,8 @@ const { initializeCustomMessage } = require("./message");
 const messageHandler = require("../handlers/messageHandler");
 require("dotenv").config();
 
+import QRCode from "qrcode";
+
 //setup logger
 const logger = pino();
 logger.level = "fatal";
@@ -26,7 +28,6 @@ async function connectToWhatsApp() {
   console.log(`v${version.join(".")}, isLatest: ${isLatest}`);
   const sock = makeWASocket({
     // can provide additional config here
-    printQRInTerminal: true,
     auth: {
       creds: state.creds,
       /** caching makes the store faster to send/recv messages */
@@ -40,7 +41,13 @@ async function connectToWhatsApp() {
   sock.ev.process(async (events) => {
     if (events["connection.update"]) {
       const update = events["connection.update"];
-      const { connection, lastDisconnect } = update;
+      const { connection, lastDisconnect, qr } = update;
+
+      if (qr) {
+        // as an example, this prints the qr code to the terminal
+        console.log(await QRCode.toString(qr, { type: "terminal" }));
+      }
+
       if (connection === "close") {
         // reconnect if not logged out
         if (
