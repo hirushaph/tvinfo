@@ -17,6 +17,7 @@ const { BOT_COVER_IMAGE } = require("../../config/config");
 
 const handleMovies = async function (msgText, msg) {
   const queryData = getQuery(msgText);
+  // console.log(queryData)
   const type = "movie";
   if (!queryData.query) throw new Error("Invalid Query");
 

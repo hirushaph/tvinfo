@@ -18,7 +18,7 @@ const createUrl = function (baseURL, queryParams) {
 
 // get Movie Details
 
-const searchMovie = async function ({ query, year }) {
+const searchMovie = async function ({ query, year , region}) {
   try {
     let queryParams = {
       query,
@@ -29,6 +29,7 @@ const searchMovie = async function ({ query, year }) {
 
     // add year if defined
     if (year) queryParams.year = year;
+    if(region) queryParams.region = region;
 
     const url = createUrl(TMDB_MOVIE_SEARCH_URL, queryParams);
 

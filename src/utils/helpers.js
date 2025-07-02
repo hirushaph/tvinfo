@@ -98,29 +98,56 @@ const checkRoles = function (command, msg) {
  * @param {String} msg - The text message received from the user.
  * @returns {Object | undefined} - The extracted query and year if found, otherwise undefined.
  */
-function getQuery(msg) {
-  let query = undefined;
-  let year = undefined;
+// function getQuery(msg) {
+//   let query = undefined;
+//   let year = undefined;
 
-  if (msg.includes(".y")) {
-    const movieInfo = msg.split(".y")[0];
-    query = movieInfo.split(" ").slice(1).join(" ") || undefined;
-    const match = msg.match(/\.y\s(\d+)/);
-    if (match) {
-      year = match[1];
-    }
-    const updatedQuery = query.replace(/\s+$/, ""); // remove last space
-    return { query: updatedQuery, year };
-  }
-  query = msg.split(" ").slice(1).join(" ") || undefined;
-  return { query, year };
-}
+//   if (msg.includes(".y")) {
+//     const movieInfo = msg.split(".y")[0];
+//     query = movieInfo.split(" ").slice(1).join(" ") || undefined;
+//     const match = msg.match(/\.y\s(\d+)/);
+//     if (match) {
+//       year = match[1];
+//     }
+//     const updatedQuery = query.replace(/\s+$/, ""); // remove last space
+//     return { query: updatedQuery, year };
+//   }
+//   query = msg.split(" ").slice(1).join(" ") || undefined;
+//   return { query, year };
+// }
 
 function getTextParam(msg) {
   query = msg.split(" ")[1];
 
   return query;
 }
+
+function getQuery(msg) {
+  let query = undefined;
+  let year = undefined;
+  let region = undefined;
+
+  // Extract year
+  const yearMatch = msg.match(/\.y\s*(\d{4})/);
+  if (yearMatch) {
+    year = yearMatch[1];
+  }
+
+  // Extract region
+  const regionMatch = msg.match(/\.r\s*([A-Z]{2})/i);
+  if (regionMatch) {
+    region = regionMatch[1].toUpperCase();
+  }
+
+  // Remove .y and .r parts from the message to extract just the query
+  let cleanMsg = msg.replace(/\.y\s*\d{4}/, "").replace(/\.r\s*[A-Z]{2}/i, "");
+
+  // Extract the actual search query (everything after first space)
+  query = cleanMsg.trim().split(" ").slice(1).join(" ") || undefined;
+
+  return { query, year, region };
+}
+
 
 /**
  * Get Message Text From Current Message Object
