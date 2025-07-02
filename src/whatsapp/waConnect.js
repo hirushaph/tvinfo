@@ -4,6 +4,7 @@ const {
   useMultiFileAuthState,
   fetchLatestBaileysVersion,
   makeCacheableSignalKeyStore,
+  Browsers,
 } = require("@whiskeysockets/baileys");
 const { Boom } = require("@hapi/boom");
 const pino = require("pino");
@@ -36,6 +37,7 @@ async function connectToWhatsApp() {
     logger,
     msgRetryCounterCache,
     cachedGroupMetadata: async (jid) => groupCache.get(jid),
+    browser: Browsers.macOS("Desktop"),
   });
 
   sock.ev.process(async (events) => {
