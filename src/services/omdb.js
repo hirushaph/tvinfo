@@ -1,5 +1,5 @@
-const { OMDB_BASE_URL } = require("../config/config");
-const axios = require("../utils/axios");
+import { OMDB_BASE_URL } from "../config/config.js";
+import { axios } from "../utils/axios.js";
 
 const createUrl = function (baseURL, queryParams) {
   const query = new URLSearchParams({ ...queryParams }).toString();
@@ -7,7 +7,7 @@ const createUrl = function (baseURL, queryParams) {
   return `${baseURL}?${query}`;
 };
 
-const getOmdbMovie = async function (id) {
+export const getOmdbMovie = async function (id) {
   const url = createUrl(OMDB_BASE_URL, {
     apikey: process.env.OMDB_KEY,
     i: id,
@@ -21,5 +21,3 @@ const getOmdbMovie = async function (id) {
     throw new Error(error.message);
   }
 };
-
-module.exports = { getOmdbMovie };

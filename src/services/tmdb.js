@@ -1,13 +1,13 @@
-const {
+import {
   TMDB_MOVIE_SEARCH_URL,
-  SEARCH_RESULT_LIMIT,
   TMDB_MOVIE_BASE_URL,
-  TMDB_IMAGE_URL,
   TMDB_TV_SEARCH_URL,
   TMDB_TV_BASE_URL,
   CAST_LIMIT,
-} = require("../config/config");
-const axios = require("../utils/axios");
+  SEARCH_RESULT_LIMIT,
+  TMDB_IMAGE_URL,
+} from "../config/config.js";
+import { axios } from "../utils/axios.js";
 
 // Create URL with paramas
 const createUrl = function (baseURL, queryParams) {
@@ -18,7 +18,7 @@ const createUrl = function (baseURL, queryParams) {
 
 // get Movie Details
 
-const searchMovie = async function ({ query, year , region}) {
+export const searchMovie = async function ({ query, year, region }) {
   try {
     let queryParams = {
       query,
@@ -29,7 +29,7 @@ const searchMovie = async function ({ query, year , region}) {
 
     // add year if defined
     if (year) queryParams.year = year;
-    if(region) queryParams.region = region;
+    if (region) queryParams.region = region;
 
     const url = createUrl(TMDB_MOVIE_SEARCH_URL, queryParams);
 
@@ -57,7 +57,7 @@ const searchMovie = async function ({ query, year , region}) {
   }
 };
 
-const getTmdbMovie = async function (id) {
+export const getTmdbMovie = async function (id) {
   const url = `${TMDB_MOVIE_BASE_URL}/${id}`;
   const options = {
     method: "GET",
@@ -80,7 +80,7 @@ const getTmdbMovie = async function (id) {
 
 // get Tv Series Details
 
-const searchTv = async function ({ query, year }) {
+export const searchTv = async function ({ query, year }) {
   try {
     let queryParams = {
       query,
@@ -115,7 +115,7 @@ const searchTv = async function ({ query, year }) {
   }
 };
 
-const getTmdbTv = async function (id) {
+export const getTmdbTv = async function (id) {
   try {
     const url = `${TMDB_TV_BASE_URL}${id}`;
     const options = {
@@ -155,7 +155,7 @@ const externalTvIds = async function (id) {
   }
 };
 
-const getImages = async function (id, type) {
+export const getImages = async function (id, type) {
   try {
     let url;
     if (type === "movie") url = `${TMDB_MOVIE_BASE_URL}${id}/images`;
@@ -191,7 +191,7 @@ const getCast = async function (id) {
   return limitedCast;
 };
 
-const getPosterUrl = function (path) {
+export const getPosterUrl = function (path) {
   if (!path) return undefined;
   return `${TMDB_IMAGE_URL}${path}`;
 };
@@ -217,13 +217,3 @@ function generateResults(data) {
 
   return result;
 }
-
-module.exports = {
-  searchMovie,
-  getTmdbMovie,
-  getPosterUrl,
-  searchTv,
-  getTmdbTv,
-  getImages,
-  getCast,
-};

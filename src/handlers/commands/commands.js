@@ -1,21 +1,21 @@
-const UserModel = require("../../models/UserModel");
-const { searchMovie, searchTv } = require("../../services/tmdb");
-const {
+import UserModel from "../../models/UserModel.js";
+import { searchMovie, searchTv } from "../../services/tmdb.js";
+import {
   getQuery,
   getTextParam,
   getUserId,
   sysInfo,
-} = require("../../utils/helpers");
-const { updateState } = require("../../utils/state");
-const { sendReply, sendMediaMessage } = require("../../whatsapp/message");
-const { fetchDetails } = require("./helpers/fetchDetails");
-const formatAndSendDetails = require("./helpers/formatAndSendDetails");
-const handleMultiSearchResults = require("./helpers/handleMultiResult");
-const options = require("../../config/options.json");
-const { sysInfoMsg } = require("../../utils/template");
-const { BOT_COVER_IMAGE } = require("../../config/config");
+} from "../../utils/helpers.js";
+import { updateState } from "../../utils/state.js";
+import { sendReply, sendMediaMessage } from "../../whatsapp/message.js";
+import { fetchDetails } from "./helpers/fetchDetails.js";
+import { formatAndSendDetails } from "./helpers/formatAndSendDetails.js";
+import { handleMultiSearchResults } from "./helpers/handleMultiResult.js";
+import options from "../../config/options.json" with { type: "json" };
+import { sysInfoMsg } from "../../utils/template.js";
+import { BOT_COVER_IMAGE } from "../../config/config.js";
 
-const handleMovies = async function (msgText, msg) {
+export const handleMovies = async function (msgText, msg) {
   const queryData = getQuery(msgText);
   // console.log(queryData)
   const type = "movie";
@@ -38,7 +38,7 @@ const handleMovies = async function (msgText, msg) {
   }
 };
 
-const handleTvseries = async function (msgText, msg) {
+export const handleTvseries = async function (msgText, msg) {
   const queryData = getQuery(msgText);
   const type = "tv";
   if (!queryData.query) throw new Error("Invalid Query");
@@ -60,7 +60,7 @@ const handleTvseries = async function (msgText, msg) {
   }
 };
 
-const handleAddOptions = async function (msgText, msg) {
+export const handleAddOptions = async function (msgText, msg) {
   try {
     const query = getTextParam(msgText);
     const userId = getUserId(msg);
@@ -89,7 +89,7 @@ const handleAddOptions = async function (msgText, msg) {
   }
 };
 
-const handleRemoveOptions = async function (msgText, msg) {
+export const handleRemoveOptions = async function (msgText, msg) {
   try {
     const query = getTextParam(msgText);
     const userId = getUserId(msg);
@@ -118,18 +118,10 @@ const handleRemoveOptions = async function (msgText, msg) {
   }
 };
 
-const handleSystemInfo = async function (msg) {
+export const handleSystemInfo = async function (msg) {
   const info = sysInfo();
 
   const infoMsg = sysInfoMsg(info);
 
   await sendMediaMessage(infoMsg, BOT_COVER_IMAGE, msg);
-};
-
-module.exports = {
-  handleMovies,
-  handleTvseries,
-  handleAddOptions,
-  handleRemoveOptions,
-  handleSystemInfo,
 };

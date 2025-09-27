@@ -2,16 +2,16 @@
  * ==== Bot Details ====
  */
 
-module.exports.BOT_NAME = "Tvinfo";
-module.exports.BOT_COVER_IMAGE = "src/assets/tvinfo_cover.jpg";
+export const BOT_NAME = "Tvinfo";
+export const BOT_COVER_IMAGE = "src/assets/tvinfo_cover.jpg";
 
 /**
  * ==== Owner Details ====
  * All these fields are required
  */
 
-module.exports.OWNER_PHONE = ""; // phone number with country code
-module.exports.OWNER_NAME = "";
+export const OWNER_PHONE = ""; // phone number with country code
+export const OWNER_NAME = "";
 
 /**
  * ===== API CACHE =====
@@ -26,17 +26,17 @@ module.exports.OWNER_NAME = "";
  * 1 day = 86400000 milliseconds
  * 2 days = 172800000 milliseconds
  */
-module.exports.API_CACHE_EXPIRE_TIME = 43200000;
+export const API_CACHE_EXPIRE_TIME = 43200000;
 
 /**
  * ==== LIMITATIONS ====
  */
-module.exports.SEARCH_RESULT_LIMIT = 5;
+export const SEARCH_RESULT_LIMIT = 5;
 // no of posters should send to user if user requested posters
-module.exports.POSTER_SENDING_LIMIT = 5;
-module.exports.CAST_LIMIT = 3;
+export const POSTER_SENDING_LIMIT = 5;
+export const CAST_LIMIT = 3;
 // If this enabled bot users can access bot only in inside groups , inbox disabled
-module.exports.INBOX_DISABLED = true;
+export const INBOX_DISABLED = true;
 
 // ==== API Settings ====
 /**
@@ -44,20 +44,20 @@ module.exports.INBOX_DISABLED = true;
  * 1000 apis calls per day [free]
  * All other details get from tmdb api
  */
-module.exports.OMDB = true;
+export const OMDB = true;
 
 /**
  * ===== BOT Internal Settins ====
  */
 
 // Server default port
-module.exports.EXPRESS_PORT = 3000;
+export const EXPRESS_PORT = 3000;
 
 // Api urls
-module.exports.TMDB_IMAGE_URL = "https://image.tmdb.org/t/p/original";
-module.exports.TMDB_MOVIE_BASE_URL = "https://api.themoviedb.org/3/movie/";
-module.exports.TMDB_TV_BASE_URL = "https://api.themoviedb.org/3/tv/";
-module.exports.TMDB_MOVIE_SEARCH_URL =
+export const TMDB_IMAGE_URL = "https://image.tmdb.org/t/p/original";
+export const TMDB_MOVIE_BASE_URL = "https://api.themoviedb.org/3/movie/";
+export const TMDB_TV_BASE_URL = "https://api.themoviedb.org/3/tv/";
+export const TMDB_MOVIE_SEARCH_URL =
   "https://api.themoviedb.org/3/search/movie";
-module.exports.TMDB_TV_SEARCH_URL = "https://api.themoviedb.org/3/search/tv";
-module.exports.OMDB_BASE_URL = "http://www.omdbapi.com/";
+export const TMDB_TV_SEARCH_URL = "https://api.themoviedb.org/3/search/tv";
+export const OMDB_BASE_URL = "http://www.omdbapi.com/";

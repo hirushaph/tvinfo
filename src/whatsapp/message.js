@@ -5,7 +5,7 @@ let sock;
  *
  * @param {object} socket - The socket object to be initialized.
  */
-function initializeCustomMessage(socket) {
+export function initializeCustomMessage(socket) {
   sock = socket;
 }
 
@@ -17,7 +17,7 @@ function initializeCustomMessage(socket) {
  * @returns {Promise} - A promise that resolves when the message is sent successfully.
  *
  */
-async function sendReply(text, msg) {
+export async function sendReply(text, msg) {
   // await randomDelay();
   // await sendMessageWTyping(msg.key.remoteJid);
   return await sock.sendMessage(
@@ -36,7 +36,7 @@ async function sendReply(text, msg) {
  * @param {string} msg - Message Context
  * @returns {Promise<object>} - Return a pormise that reslove sended info
  */
-async function sendMediaMessage(text, url, msg) {
+export async function sendMediaMessage(text, url, msg) {
   // await randomDelay();
   // await sendMessageWTyping(msg.key.remoteJid);
   const reply = await sock.sendMessage(
@@ -59,7 +59,7 @@ async function sendMediaMessage(text, url, msg) {
  * @param {object} msg - Message Context
  * @returns {Promise<object>} - Return a pormise that reslove sended info
  */
-async function sendImage(url, msg) {
+export async function sendImage(url, msg) {
   // await randomDelay();
   return await sock.sendMessage(
     msg.key.remoteJid,
@@ -78,7 +78,7 @@ async function sendImage(url, msg) {
  * @param {object} msg - Message Object
  * @returns {Promise}
  */
-async function markAsRead(msg) {
+export async function markAsRead(msg) {
   return await sock.readMessages([msg.key]);
 }
 
@@ -88,7 +88,7 @@ async function markAsRead(msg) {
  *
  * @param {string} jid - User RemoteJID
  */
-async function sendMessageWTyping(jid) {
+export async function sendMessageWTyping(jid) {
   await sock.presenceSubscribe(jid);
   await delay(200);
 
@@ -97,11 +97,3 @@ async function sendMessageWTyping(jid) {
 
   await sock.sendPresenceUpdate("paused", jid);
 }
-
-module.exports = {
-  sendReply,
-  initializeCustomMessage,
-  sendMediaMessage,
-  sendImage,
-  markAsRead,
-};

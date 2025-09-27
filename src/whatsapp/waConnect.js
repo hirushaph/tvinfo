@@ -1,19 +1,19 @@
-const {
-  makeWASocket,
+import makeWASocket, {
+  Browsers,
   DisconnectReason,
-  useMultiFileAuthState,
   fetchLatestBaileysVersion,
   makeCacheableSignalKeyStore,
-  Browsers,
-} = require("@whiskeysockets/baileys");
-const { Boom } = require("@hapi/boom");
-const pino = require("pino");
-const NodeCache = require("node-cache");
-const { initializeCustomMessage } = require("./message");
-const messageHandler = require("../handlers/messageHandler");
-require("dotenv").config();
+  useMultiFileAuthState,
+} from "baileys";
+import NodeCache from "node-cache";
+import pino from "pino";
+import { Boom } from "@hapi/boom";
+import messageHandler from "../handlers/messageHandler.js";
+import { initializeCustomMessage } from "./message.js";
+import QRCode from "qrcode";
+import dotenv from "dotenv";
 
-const QRCode = require("qrcode");
+dotenv.config();
 
 //setup logger
 const logger = pino();
@@ -23,7 +23,7 @@ logger.level = "fatal";
 const msgRetryCounterCache = new NodeCache();
 const groupCache = new NodeCache({ stdTTL: 5 * 60, useClones: false });
 
-async function connectToWhatsApp() {
+export default async function connectToWhatsApp() {
   const { state, saveCreds } = await useMultiFileAuthState("auth_tvinfo");
   const { version, isLatest } = await fetchLatestBaileysVersion();
   console.log(`v${version.join(".")}, isLatest: ${isLatest}`);
@@ -47,7 +47,9 @@ async function connectToWhatsApp() {
 
       if (qr) {
         // as an example, this prints the qr code to the terminal
-        console.log(await QRCode.toString(qr, { type: "terminal" }));
+        console.log(
+          await QRCode.toString(qr, { type: "terminal", small: true })
+        );
       }
 
       if (connection === "close") {
@@ -84,5 +86,3 @@ async function connectToWhatsApp() {
   // Initialize Custom Messages
   initializeCustomMessage(sock);
 }
-
-module.exports = connectToWhatsApp;

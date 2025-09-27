@@ -1,8 +1,12 @@
-const SearchModel = require("../../../models/SearchModel");
-const { searchResultGen } = require("../../../utils/messageGenerate");
-const { sendReply } = require("../../../whatsapp/message");
+import SearchModel from "../../../models/SearchModel.js";
+import { searchResultGen } from "../../../utils/messageGenerate.js";
+import { sendReply } from "../../../whatsapp/message.js";
 
-const handleMultiSearchResults = async function (type, searchResults, msg) {
+export const handleMultiSearchResults = async function (
+  type,
+  searchResults,
+  msg
+) {
   // generate search result message
   const { msg: searchMsg, ids } = searchResultGen(searchResults);
 
@@ -18,5 +22,3 @@ const handleMultiSearchResults = async function (type, searchResults, msg) {
 
   await newSearch.save();
 };
-
-module.exports = handleMultiSearchResults;

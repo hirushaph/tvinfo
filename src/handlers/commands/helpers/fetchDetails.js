@@ -1,8 +1,8 @@
-const { OMDB } = require("../../../config/config");
-const { getOmdbMovie } = require("../../../services/omdb");
-const { getTmdbMovie, getTmdbTv } = require("../../../services/tmdb");
+import { OMDB } from "../../../config/config.js";
+import { getOmdbMovie } from "../../../services/omdb.js";
+import { getTmdbMovie, getTmdbTv } from "../../../services/tmdb.js";
 
-async function fetchDetails(itemId, type) {
+export async function fetchDetails(itemId, type) {
   let tmdbItem, omdbItem;
   if (type === "movie") {
     tmdbItem = await getTmdbMovie(itemId);
@@ -18,7 +18,3 @@ async function fetchDetails(itemId, type) {
   }
   return { tmdbItem, omdbItem };
 }
-
-module.exports = {
-  fetchDetails,
-};

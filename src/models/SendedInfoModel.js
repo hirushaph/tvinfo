@@ -1,5 +1,4 @@
-const mongoose = require("mongoose");
-
+import mongoose from "mongoose";
 const sendedInfoSchema = new mongoose.Schema({
   userId: {
     type: String,
@@ -35,5 +34,4 @@ sendedInfoSchema.statics.addItem = async function (itemObj) {
 };
 
 const SendedInfoModel = mongoose.model("SendedInfo", sendedInfoSchema);
-
-module.exports = SendedInfoModel;
+export default SendedInfoModel;

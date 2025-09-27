@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const searchSchema = new mongoose.Schema({
   userId: {
@@ -21,5 +21,4 @@ const searchSchema = new mongoose.Schema({
 });
 
 const SearchModel = new mongoose.model("Search", searchSchema);
-
-module.exports = SearchModel;
+export default SearchModel;

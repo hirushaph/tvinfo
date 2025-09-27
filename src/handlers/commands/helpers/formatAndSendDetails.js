@@ -1,9 +1,14 @@
-const SendedInfoModel = require("../../../models/SendedInfoModel");
-const { formatSingleMovie, formatSingleTv } = require("../../../utils/format");
-const template = require("../../../utils/template");
-const { sendMediaMessage } = require("../../../whatsapp/message");
+import SendedInfoModel from "../../../models/SendedInfoModel.js";
+import { formatSingleMovie, formatSingleTv } from "../../../utils/format.js";
+import * as template from "../../../utils/template.js";
+import { sendMediaMessage } from "../../../whatsapp/message.js";
 
-const formatAndSendDetails = async function (type, tmdbItem, omdbItem, msg) {
+export const formatAndSendDetails = async function (
+  type,
+  tmdbItem,
+  omdbItem,
+  msg
+) {
   // Format and Combine Both api results
   const formattedItem =
     type === "movie"
@@ -34,5 +39,3 @@ const formatAndSendDetails = async function (type, tmdbItem, omdbItem, msg) {
 
   SendedInfoModel.addItem(newInfo);
 };
-
-module.exports = formatAndSendDetails;

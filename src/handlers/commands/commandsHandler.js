@@ -1,29 +1,25 @@
-const {
+import {
   getText,
   matchCommand,
   restart,
   getUserId,
   getQuery,
   singleCommand,
-} = require("../../utils/helpers");
-const { updateState } = require("../../utils/state");
-const { BOT_NAME } = require("../../config/config");
-const UserModel = require("../../models/UserModel");
+} from "../../utils/helpers.js";
+import { updateState } from "../../utils/state.js";
+import { BOT_NAME } from "../../config/config.js";
+import UserModel from "../../models/UserModel.js";
 
-const {
-  sendReply,
-  markAsRead,
-  sendTextMessage,
-} = require("../../whatsapp/message");
-const {
-  handleTvseries,
-  handleMovies,
+import { sendReply, markAsRead } from "../../whatsapp/message.js";
+import {
   handleAddOptions,
+  handleMovies,
   handleRemoveOptions,
   handleSystemInfo,
-} = require("./commands");
+  handleTvseries,
+} from "./commands.js";
 
-const processCommands = async function (sock, msg) {
+export const processCommands = async function (sock, msg) {
   // Mark as read
   await markAsRead(msg);
   // get text message
@@ -89,28 +85,26 @@ const processCommands = async function (sock, msg) {
      * Setup owner in config.js insted of this
      *
      */
-    if (msgText === ".setowner") {
-      if (!msg.key.fromMe) sendReply("🚫 Not Allowed", msg);
-      const queryData = getQuery(msgText);
+    // if (msgText === ".setowner") {
+    //   if (!msg.key.fromMe) sendReply("🚫 Not Allowed", msg);
+    //   const queryData = getQuery(msgText);
 
-      const owner = await UserModel.find({ roles: { $in: ["owner"] } });
+    //   const owner = await UserModel.find({ roles: { $in: ["owner"] } });
 
-      if (!owner) {
-        const userId = queryData + "@s.whatsapp.net";
-        const text =
-          "*Hello!*\n\nYou have been added as an owner for the" +
-          BOT_NAME +
-          " bot.\n\nPlease reply to this message choosing number below to confirm or cancel:\n\n1. Confirm\n2. Cancel`";
-        sendTextMessage(text, userId);
-        // under development
-        // Did not handled confirm by user
-      }
+    //   if (!owner) {
+    //     const userId = queryData + "@s.whatsapp.net";
+    //     const text =
+    //       "*Hello!*\n\nYou have been added as an owner for the" +
+    //       BOT_NAME +
+    //       " bot.\n\nPlease reply to this message choosing number below to confirm or cancel:\n\n1. Confirm\n2. Cancel`";
+    //     sendTextMessage(text, userId);
+    //     // under development
+    //     // Did not handled confirm by user
+    //   }
 
-      if (!owner) sendReply("Owner is already added");
-    }
+    //   if (!owner) sendReply("Owner is already added");
+    // }
   } catch (error) {
     sendReply(error.message, msg);
   }
 };
-
-module.exports = processCommands;
