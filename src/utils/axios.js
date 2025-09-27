@@ -1,9 +1,7 @@
-const Axios = require("axios");
-const { setupCache } = require("axios-cache-interceptor");
-const { API_CACHE_EXPIRE_TIME } = require("../config/config");
+import Axios from "axios";
+import { setupCache } from "axios-cache-interceptor";
+import { API_CACHE_EXPIRE_TIME } from "../config/config.js";
 
 const instance = Axios.create();
 
-const axios = setupCache(instance, { ttl: API_CACHE_EXPIRE_TIME });
-
-module.exports = axios;
+export const axios = setupCache(instance, { ttl: API_CACHE_EXPIRE_TIME });

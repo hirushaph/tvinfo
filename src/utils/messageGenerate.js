@@ -1,4 +1,4 @@
-const searchResultGen = function (data) {
+export const searchResultGen = function (data) {
   let ids = [];
 
   // prettier-ignore
@@ -17,5 +17,3 @@ const searchResultGen = function (data) {
 
   return { msg, ids };
 };
-
-module.exports = { searchResultGen };

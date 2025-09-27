@@ -1,12 +1,12 @@
-const { TMDB_IMAGE_URL, POSTER_SENDING_LIMIT } = require("../../config/config");
-const SearchModel = require("../../models/SearchModel");
-const SendedInfoModel = require("../../models/SendedInfoModel");
-const { getImages } = require("../../services/tmdb");
-const { sendImage } = require("../../whatsapp/message");
-const { fetchDetails } = require("../commands/helpers/fetchDetails");
-const formatAndSendDetails = require("../commands/helpers/formatAndSendDetails");
+import { TMDB_IMAGE_URL, POSTER_SENDING_LIMIT } from "../../config/config.js";
+import SearchModel from "../../models/SearchModel.js";
+import SendedInfoModel from "../../models/SendedInfoModel.js";
+import { getImages } from "../../services/tmdb.js";
+import { sendImage } from "../../whatsapp/message.js";
+import { fetchDetails } from "../commands/helpers/fetchDetails.js";
+import { formatAndSendDetails } from "../commands/helpers/formatAndSendDetails.js";
 
-const handleSelectedItem = async function (selectedMovie, msg) {
+export const handleSelectedItem = async function (selectedMovie, msg) {
   const repliedMsgId = msg.message.extendedTextMessage.contextInfo.stanzaId;
 
   const sendedResult = await SearchModel.findOne({ replyId: repliedMsgId });
@@ -36,7 +36,7 @@ const handleSelectedItem = async function (selectedMovie, msg) {
   }
 };
 
-const handleImgRequest = async function (msg) {
+export const handleImgRequest = async function (msg) {
   const sendedinfoId = msg.message.extendedTextMessage.contextInfo.stanzaId;
 
   try {
@@ -80,4 +80,3 @@ const handleImgRequest = async function (msg) {
     throw new Error(error.message);
   }
 };
-module.exports = { handleSelectedItem, handleImgRequest };

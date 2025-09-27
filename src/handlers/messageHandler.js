@@ -1,14 +1,16 @@
-const { isJidGroup } = require("@whiskeysockets/baileys");
-const { SEARCH_RESULT_LIMIT, INBOX_DISABLED } = require("../config/config");
-const { getText, isQuoted } = require("../utils/helpers");
-const { markAsRead, sendReply } = require("../whatsapp/message");
-const processCommands = require("./commands/commandsHandler");
-const { handleSelectedItem, handleImgRequest } = require("./text/textMessage");
+import { isJidGroup } from "baileys";
+import { SEARCH_RESULT_LIMIT, INBOX_DISABLED } from "../config/config.js";
+import { getText, isQuoted } from "../utils/helpers.js";
+import { markAsRead, sendReply } from "../whatsapp/message.js";
+import { processCommands } from "./commands/commandsHandler.js";
+import { handleSelectedItem, handleImgRequest } from "./text/textMessage.js";
 
 const messageHandler = async function (sock) {
   sock.ev.on("messages.upsert", async (m) => {
     // console.log(JSON.stringify(m, undefined, 2));
     const msg = m.messages[0];
+
+    console.log(JSON.stringify(msg, null, 2));
 
     if (!isJidGroup(msg.key.remoteJid) && INBOX_DISABLED) {
       return;
@@ -48,4 +50,4 @@ const messageHandler = async function (sock) {
   });
 };
 
-module.exports = messageHandler;
+export default messageHandler;

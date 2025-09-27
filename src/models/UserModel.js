@@ -1,4 +1,4 @@
-const { default: mongoose } = require("mongoose");
+import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
   userId: {
@@ -27,6 +27,6 @@ userSchema.statics.addItem = async function (itemObj) {
     throw new Error("Error adding new item: " + error.message);
   }
 };
-
 const UserModel = mongoose.model("User", userSchema);
-module.exports = UserModel;
+
+export default UserModel;

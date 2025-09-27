@@ -2,12 +2,10 @@ let appState = {
   user: {},
 };
 
-function updateState(newState) {
+export function updateState(newState) {
   appState = { ...appState, ...newState };
 }
 
-function getState() {
+export function getState() {
   return appState;
 }
-
-module.exports = { updateState, getState };

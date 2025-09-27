@@ -1,4 +1,4 @@
-const singleMovie = function (item) {
+export const singleMovie = function (item) {
   // prettier-ignore
   const msg = `*${item.title} (${item.year})* ${item.language !== "English" ? "| `"+item.originalName+"`":""} \n\n` +
               (item.isAdultRated ? `🔞 *18+* ${item.rated} Rated\n` : "") +
@@ -17,7 +17,7 @@ const singleMovie = function (item) {
   return msg;
 };
 
-const singleTv = function (tv) {
+export const singleTv = function (tv) {
   // prettier-ignore
   const msg = `*${tv.title} (${tv.year})* \n\n` +
               (tv.isAdultRated ? `🔞 *18+* ${tv.rated} Rated\n` : "") +
@@ -35,7 +35,7 @@ const singleTv = function (tv) {
   return msg;
 };
 
-const sysInfoMsg = function (info) {
+export const sysInfoMsg = function (info) {
   // prettier-ignore
   let msg = 
 `✤ *𝚃𝚅𝙸𝙽𝙵𝙾 𝚂𝚢𝚜𝚝𝚎𝚖 𝚂𝚝𝚊𝚝𝚞𝚜* ✤
@@ -55,4 +55,3 @@ const sysInfoMsg = function (info) {
 
   return msg;
 };
-module.exports = { singleMovie, singleTv, sysInfoMsg };

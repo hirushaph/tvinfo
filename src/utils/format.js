@@ -1,6 +1,6 @@
-const { default: countryCodeEmoji } = require("country-code-emoji");
-const { getPosterUrl } = require("../services/tmdb");
-const { getState } = require("./state");
+import countryCodeEmoji from "country-code-emoji";
+import { getPosterUrl } from "../services/tmdb.js";
+import { getState } from "./state.js";
 
 // get full language name form shortcode
 const languageNames = new Intl.DisplayNames(["en"], {
@@ -11,7 +11,7 @@ const getCountryNames = new Intl.DisplayNames(["en"], {
   type: "region",
 });
 
-const formatSingleMovie = function (tmdb, omdb) {
+export const formatSingleMovie = function (tmdb, omdb) {
   const formatedMovie = {
     title: tmdb.title,
     posterPath: getPosterUrl(tmdb.poster_path),
@@ -38,7 +38,7 @@ const formatSingleMovie = function (tmdb, omdb) {
   return formatedMovie;
 };
 
-const formatSingleTv = function (tmdb, omdb) {
+export const formatSingleTv = function (tmdb, omdb) {
   const formatedTv = {
     title: tmdb.name,
     posterPath: getPosterUrl(tmdb.poster_path),
@@ -157,5 +157,3 @@ const getReleasedStatus = function (date) {
     return false;
   }
 };
-
-module.exports = { formatSingleMovie, formatSingleTv };

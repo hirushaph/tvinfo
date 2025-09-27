@@ -1,18 +1,18 @@
-const { isJidGroup } = require("@whiskeysockets/baileys/lib");
-const { default: mongoose } = require("mongoose");
-const pm2 = require("pm2");
-const os = require("os");
-const { OWNER_PHONE, OWNER_NAME } = require("../config/config");
-const UserModel = require("../models/UserModel");
-const roles = require("../config/roles.json");
-const { getState } = require("./state");
+import mongoose from "mongoose";
+import pm2 from "pm2";
+import os from "os";
+import { OWNER_PHONE, OWNER_NAME } from "../config/config.js";
+import UserModel from "../models/UserModel.js";
+import roles from "../config/roles.json" with { type: "json" };
+import { getState } from "./state.js";
+import { isJidGroup } from "baileys";
 
 // delay function
-function randomDelay() {
+export function randomDelay() {
   const ms = generateRandomNumber(500, 100);
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
-function delay(ms) {
+export function delay(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
@@ -21,7 +21,7 @@ function delay(ms) {
  * @param {object} msg - The message object to be checked.
  * @returns {boolean} - True if the message is quoted, false otherwise.
  */
-function isQuoted(msg) {
+export function isQuoted(msg) {
   if (msg.hasOwnProperty("message")) {
     const main = msg.message;
     if (main.hasOwnProperty("extendedTextMessage")) {
@@ -40,7 +40,7 @@ function isQuoted(msg) {
  * @param {String} msg - message received from the user
  * @returns {boolean} - return true if matched and validated otherwise throw an error
  */
-const matchCommand = function (command, msg) {
+export const matchCommand = function (command, msg) {
   const cmd = msg.split(" ")[0];
 
   if (cmd === command) {
@@ -59,7 +59,7 @@ const matchCommand = function (command, msg) {
  * @returns {boolean} - return true if successfull
  */
 
-const singleCommand = function (command, msg) {
+export const singleCommand = function (command, msg) {
   if (command === msg) {
     if (!checkRoles(command, msg)) return;
     return true;
@@ -73,7 +73,7 @@ const singleCommand = function (command, msg) {
  * @param {object} msg - Current message
  * @returns
  */
-const checkRoles = function (command, msg) {
+export const checkRoles = function (command, msg) {
   const state = getState();
 
   if (!state) return;
@@ -116,13 +116,13 @@ const checkRoles = function (command, msg) {
 //   return { query, year };
 // }
 
-function getTextParam(msg) {
+export function getTextParam(msg) {
   query = msg.split(" ")[1];
 
   return query;
 }
 
-function getQuery(msg) {
+export function getQuery(msg) {
   let query = undefined;
   let year = undefined;
   let region = undefined;
@@ -148,14 +148,13 @@ function getQuery(msg) {
   return { query, year, region };
 }
 
-
 /**
  * Get Message Text From Current Message Object
  *
  * @param {object} msg - Current Message Object
  * @returns {string | undefined} - Message text or undefined
  */
-function getText(msg) {
+export function getText(msg) {
   if (isQuoted(msg)) {
     // return quoted text
     return msg.message.extendedTextMessage.text;
@@ -168,10 +167,10 @@ function getText(msg) {
 }
 
 // private helpers
-function generateRandomNumber(start, end) {
+export function generateRandomNumber(start, end) {
   return Math.floor(Math.random() * (end - start + 1)) + start;
 }
-function validateCommand(command, msgText) {
+export function validateCommand(command, msgText) {
   if (msgText === command) {
     throw new Error("Incomplete Command");
   }
@@ -180,7 +179,7 @@ function validateCommand(command, msgText) {
   }
 }
 
-function restart() {
+export function restart() {
   if (!process.env.pm_id) {
     throw new Error(
       "⭕ Can't Restart Your Bot \n\n Restart only works with `pm2`"
@@ -202,18 +201,18 @@ function restart() {
   });
 }
 
-function status() {
+export function status() {
   si.cpu()
     .then((data) => console.log(data))
     .catch((error) => console.error(error));
 }
 
-function getUserId(msg) {
+export function getUserId(msg) {
   if (isJidGroup(msg.key.remoteJid)) return msg.key.participant;
   return msg.key.remoteJid;
 }
 
-async function setupOwner() {
+export async function setupOwner() {
   const phone = OWNER_PHONE;
   const name = OWNER_NAME;
 
@@ -274,7 +273,7 @@ async function setupOwner() {
   }
 }
 
-function sysInfo() {
+export function sysInfo() {
   const appUptime = process.uptime();
 
   const totalRam = os.totalmem();
@@ -294,7 +293,7 @@ function sysInfo() {
   return sysInfo;
 }
 
-function formatTime(durationInSeconds) {
+export function formatTime(durationInSeconds) {
   const secondsInMinute = 60;
   const secondsInHour = secondsInMinute * 60;
   const secondsInDay = secondsInHour * 24;
@@ -323,19 +322,3 @@ function formatTime(durationInSeconds) {
 
   return formattedTime.trim();
 }
-
-module.exports = {
-  randomDelay,
-  delay,
-  isQuoted,
-  matchCommand,
-  getText,
-  getQuery,
-  restart,
-  status,
-  getUserId,
-  setupOwner,
-  singleCommand,
-  getTextParam,
-  sysInfo,
-};
