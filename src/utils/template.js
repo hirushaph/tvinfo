@@ -8,14 +8,14 @@ export const singleMovie = function (item) {
               "\n🔤 ʟᴀɴɢᴜᴀɢᴇ  : " + item.language + "\n" +
               item.countryEmoji+" ᴄᴏᴜɴᴛʀʏ    : " + item.country + "\n" +
               "🕔 ʀᴜɴᴛɪᴍᴇ    : " + item.runtime + "\n" +
-              (item.released !== true ? "📆 ʀᴇʟᴇᴀꜱᴇᴅ   : " : "📆 ʀᴇʟᴇᴀꜱᴇ    : ") + item.releaseDate + "\n" +
+              (item.released == true ? "📆 ʀᴇʟᴇᴀꜱᴇᴅ   : " : "📆 ʀᴇʟᴇᴀꜱᴇ    : ") + item.releaseDate + "\n" +
               "🎭 ɢᴇɴʀᴇꜱ      : " + item.genres + "\n" +
-              "🙋‍♀️ ᴄᴀꜱᴛ          : _" + item.cast + "_\n" +
-              (item.plot !=="n/a" ? `✍ ᴘʟᴏᴛ        : ${item.plot}\n` : '') +
-              (item.tagline !=="n/a" ? `\n> ${item.tagline}` : '')
-
+              "🙋‍♀️ ᴄᴀꜱᴛ          : _" + item.cast + "_\n\n" +
+              (item.plot !=="n/a" ? `> ${item.plot}\n` : '')
   return msg;
 };
+
+// (item.tagline !=="n/a" ? `\n> ${item.tagline}` : ''
 
 export const singleTv = function (tv) {
   // prettier-ignore
@@ -25,12 +25,14 @@ export const singleTv = function (tv) {
               (tv.rottenTomatoes !== "n/a" ? `🍅 ʀᴏᴛᴛᴇɴ ᴛᴏᴍᴀᴛᴏᴇꜱ : ${tv.rottenTomatoes}\n` : "") +
               ((tv.rottenTomatoes === "n/a" && tv.imdb === "n/a") ? `🌟 Rating : ${tv.tmdbRating}\n` : "") + 
               "\n📂 ꜱᴇᴀꜱᴏɴꜱ    :  " + tv.seasons + "\n" +
+              "📁 ᴇᴘɪꜱᴏᴅᴇꜱ  :  " + tv.episodes + "\n" +
+              "🔖 ʟᴀꜱᴛ ᴀɪʀ   :  " + tv.last + "\n" +
+              (tv.released == true ? "📆 ʀᴇʟᴇᴀꜱᴇᴅ   : " : "📆 ʀᴇʟᴇᴀꜱᴇ    : ") + tv.releaseDate + "\n" +
               "🔤 ʟᴀɴɢᴜᴀɢᴇ  :  " + tv.language + "\n" +
               "🌎 ᴄᴏᴜɴᴛʀʏ    :  " + tv.country + "\n" +
               "🎭 ɢᴇɴʀᴇꜱ      :  *" + tv.genres + "*\n" +
-              "⌛ ꜱᴛᴀᴛᴜꜱ     :  " + tv.status + "\n" +
-              (tv.plot !=="n/a" ? `📄 ᴘʟᴏᴛ        : ${tv.plot}\n` : '') +
-              (tv.tagline !=="n/a" ? `\n> ${tv.tagline}` : '')
+              "⌛ ꜱᴛᴀᴛᴜꜱ      :  " + tv.status + "\n\n" +
+              (tv.plot !=="n/a" ? `> ${tv.plot}\n` : '')
 
   return msg;
 };

@@ -10,7 +10,7 @@ const messageHandler = async function (sock) {
     // console.log(JSON.stringify(m, undefined, 2));
     const msg = m.messages[0];
 
-    console.log(JSON.stringify(msg, null, 2));
+    // console.log(JSON.stringify(msg, null, 2));
 
     if (!isJidGroup(msg.key.remoteJid) && INBOX_DISABLED) {
       return;

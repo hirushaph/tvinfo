@@ -31,7 +31,7 @@ export const formatSingleMovie = function (tmdb, omdb) {
     cast: getCastNames(tmdb.cast) || "n/a",
     plot: getPlot(tmdb.overview, omdb.Plot) || "n/a",
     releaseDate: tmdb?.release_date?.split("-").join("/"),
-    released: getReleasedStatus(),
+    released: getReleasedStatus(tmdb?.release_date),
     originalName: tmdb?.original_title,
   };
 
@@ -57,8 +57,10 @@ export const formatSingleTv = function (tmdb, omdb) {
     status: tmdb.status || "n/a",
     seasons: tmdb.number_of_seasons || "n/a",
     plot: getPlot(tmdb.overview, omdb.Plot) || "n/a",
-    releaseDate: tmdb?.release_date?.split("-").join("/") || "n/a",
-    released: getReleasedStatus(),
+    releaseDate: tmdb?.first_air_date?.split("-").join("/") || "n/a",
+    released: getReleasedStatus(tmdb?.first_air_date),
+    last: tmdb.last_air_date?.split("-").join("/") || "n/a",
+    episodes: tmdb.number_of_episodes || "n/a",
   };
 
   return formatedTv;
@@ -79,12 +81,12 @@ const getRuntime = function (m) {
 };
 
 const getPlot = function (tmdbPlot, omdbPlot) {
-  const state = getState();
-  const options = state.user.options;
-  if (options?.includes("plot")) {
-    return omdbPlot || tmdbPlot;
-  }
-  return;
+  // const state = getState();
+  // const options = state.user.options;
+  // if (options?.includes("plot")) {
+  return omdbPlot || tmdbPlot;
+  // }
+  // return;
 };
 
 const getCastNames = function (casts) {
@@ -135,9 +137,6 @@ const getReleasedStatus = function (date) {
   const releaseDate = new Date(date);
   const today = new Date();
 
-  console.log(releaseDate);
-  console.log("j");
-
   const releaseDateOnly = new Date(
     releaseDate.getFullYear(),
     releaseDate.getMonth(),
@@ -151,7 +150,6 @@ const getReleasedStatus = function (date) {
 
   // Compare dates
   if (releaseDateOnly < todayOnly) {
-    console.log("helllo");
     return true;
   } else {
     return false;
