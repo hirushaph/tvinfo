@@ -7,3 +7,4 @@ fly.toml
 Dockerfile
 tvinfo_store.json
 storage
+.yarn
