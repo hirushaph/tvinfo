@@ -27,10 +27,9 @@ export default async function connectToWhatsApp() {
   const { state, saveCreds } = await useMultiFileAuthState("auth_tvinfo");
   const { version, isLatest } = await fetchLatestBaileysVersion();
   console.log(`v${version.join(".")}, isLatest: ${isLatest}`);
-  const WHATSAPP_VERSION = [2, 3000, 1027934701];
+  // const WHATSAPP_VERSION = [2, 3000, 1027934701];
   const sock = makeWASocket({
     // can provide additional config here
-    version: WHATSAPP_VERSION,
     auth: {
       creds: state.creds,
       /** caching makes the store faster to send/recv messages */
