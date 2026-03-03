@@ -30,6 +30,7 @@ export default async function connectToWhatsApp() {
   // const WHATSAPP_VERSION = [2, 3000, 1027934701];
   const sock = makeWASocket({
     // can provide additional config here
+    version: [2, 3000, 1033893291],
     auth: {
       creds: state.creds,
       /** caching makes the store faster to send/recv messages */
@@ -49,7 +50,7 @@ export default async function connectToWhatsApp() {
       if (qr) {
         // as an example, this prints the qr code to the terminal
         console.log(
-          await QRCode.toString(qr, { type: "terminal", small: true })
+          await QRCode.toString(qr, { type: "terminal", small: true }),
         );
       }
 
