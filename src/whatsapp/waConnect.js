@@ -30,7 +30,7 @@ export default async function connectToWhatsApp() {
   // const WHATSAPP_VERSION = [2, 3000, 1027934701];
   const sock = makeWASocket({
     // can provide additional config here
-    version: [2, 3000, 1033893291],
+    // version: [2, 3000, 1033893291],
     auth: {
       creds: state.creds,
       /** caching makes the store faster to send/recv messages */
@@ -38,34 +38,32 @@ export default async function connectToWhatsApp() {
     },
     logger,
     msgRetryCounterCache,
+    markOnlineOnConnect: false,
     cachedGroupMetadata: async (jid) => groupCache.get(jid),
-    browser: Browsers.macOS("Desktop"),
   });
 
   sock.ev.process(async (events) => {
     if (events["connection.update"]) {
       const update = events["connection.update"];
       const { connection, lastDisconnect, qr } = update;
-
       if (qr) {
         // as an example, this prints the qr code to the terminal
-        console.log(
-          await QRCode.toString(qr, { type: "terminal", small: true }),
-        );
+        console.log(await QRCode.toString(qr, { type: "terminal" }));
       }
-
       if (connection === "close") {
         // reconnect if not logged out
         if (
-          lastDisconnect?.error instanceof Boom &&
-          lastDisconnect.error.output.statusCode !== DisconnectReason.loggedOut
+          (lastDisconnect?.error instanceof Boom)?.output?.statusCode !==
+          DisconnectReason.loggedOut
         ) {
-          connectToWhatsApp();
+          connToWhatsapp();
         } else {
-          console.log(`Connection closed. You are logged out.`);
+          console.log("Connection closed. You are logged out.");
         }
-      } else if (connection === "open") {
-        console.log("Connected 🙃");
+      }
+
+      if (connection === "open") {
+        console.log("connection update", update);
       }
     }
     if (events["creds.update"]) {
