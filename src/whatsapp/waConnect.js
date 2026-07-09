@@ -56,7 +56,7 @@ export default async function connectToWhatsApp() {
           (lastDisconnect?.error instanceof Boom)?.output?.statusCode !==
           DisconnectReason.loggedOut
         ) {
-          connToWhatsapp();
+          connectToWhatsApp();
         } else {
           console.log("Connection closed. You are logged out.");
         }
