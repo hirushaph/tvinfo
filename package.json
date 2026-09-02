@@ -30,5 +30,9 @@
     "pm2": "^7.0.3",
     "qrcode": "^1.5.4",
     "sharp": "^0.35.3"
+  },
+  "allowScripts": {
+    "baileys@7.0.0-rc13": true,
+    "protobufjs@7.6.5": true
   }
 }
