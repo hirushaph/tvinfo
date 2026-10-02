@@ -1,7 +1,6 @@
 import {
   getText,
   matchCommand,
-  restart,
   getUserId,
   getQuery,
   singleCommand,
