@@ -1,11 +1,3 @@
-// require("dotenv").config();
-// const express = require("express");
-// const dbConnect = require("./db/conn");
-// const connectToWhatsApp = require("./whatsapp/waConnect");
-// const { setupOwner } = require("./utils/helpers");
-// const { default: mongoose } = require("mongoose");
-// const { EXPRESS_PORT } = require("./config/config");
-
 import express from "express";
 import mongoose from "mongoose";
 import connectToWhatsApp from "./whatsapp/waConnect.js";

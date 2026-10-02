@@ -76,9 +76,9 @@ export const processCommands = async function (sock, msg) {
 
     // Admin Commands
 
-    if (singleCommand(".restart", msgText)) {
-      restart();
-    }
+    // if (singleCommand(".restart", msgText)) {
+    //   restart();
+    // }
 
     /**
      * Under development

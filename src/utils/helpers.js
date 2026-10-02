@@ -1,5 +1,3 @@
-import mongoose from "mongoose";
-import pm2 from "pm2";
 import os from "os";
 import { OWNER_PHONE, OWNER_NAME } from "../config/config.js";
 import UserModel from "../models/UserModel.js";
@@ -84,7 +82,7 @@ export const checkRoles = function (command, msg) {
   if (!currentCommand) throw new Error("Command Permissions are Not setup");
 
   const isAllowed = userRoles.some((role) =>
-    currentCommand.allowedRoles.includes(role)
+    currentCommand.allowedRoles.includes(role),
   );
 
   if (!isAllowed) throw new Error("🚫 Not Allowed");
@@ -179,27 +177,9 @@ export function validateCommand(command, msgText) {
   }
 }
 
-export function restart() {
-  if (!process.env.pm_id) {
-    throw new Error(
-      "⭕ Can't Restart Your Bot \n\n Restart only works with `pm2`"
-    );
-  }
-  pm2.connect((err) => {
-    if (err) {
-      process.exit(1);
-    }
-
-    mongoose.disconnect();
-
-    pm2.restart(process.env.pm_id, (restartErr) => {
-      if (restartErr) {
-        process.exit(1);
-      }
-      pm2.disconnect();
-    });
-  });
-}
+// export function restart() {
+//   //
+// }
 
 export function status() {
   si.cpu()
@@ -245,14 +225,14 @@ export async function setupOwner() {
         {
           roles: ["owner", "admin"],
           username: name,
-        }
+        },
       );
     }
 
     if (exitingOwner.userId !== number) {
       await UserModel.findOneAndUpdate(
         { userId: exitingOwner.userId },
-        { roles: ["user"] }
+        { roles: ["user"] },
       );
 
       const newOwner = {
@@ -267,7 +247,7 @@ export async function setupOwner() {
     if (exitingOwner.username !== name) {
       await UserModel.findOneAndUpdate(
         { userId: exitingOwner.userId },
-        { username: name }
+        { username: name },
       );
     }
   }
@@ -301,7 +281,7 @@ export function formatTime(durationInSeconds) {
   const days = Math.floor(durationInSeconds / secondsInDay);
   const hours = Math.floor((durationInSeconds % secondsInDay) / secondsInHour);
   const minutes = Math.floor(
-    (durationInSeconds % secondsInHour) / secondsInMinute
+    (durationInSeconds % secondsInHour) / secondsInMinute,
   );
   const seconds = Math.floor(durationInSeconds % secondsInMinute);
 
